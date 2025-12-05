@@ -1,35 +1,47 @@
 import Link from "next/link";
 import { Phone, Mail, Globe, MapPin } from "lucide-react";
-import { Logo } from "@/components/shared/Logo";
 import { companyInfo, navigation } from "@/lib/constants";
 
 export function Footer() {
   return (
-    <footer className="bg-primary-darker text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-[#063251] text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="space-y-4">
-            <Logo />
-            <p className="text-sm text-gray-300 leading-relaxed">
+            {/* Logo Footer */}
+            <Link href="/" className="flex items-center gap-3 group">
+              <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary text-white font-bold text-xl transition-transform group-hover:scale-105">
+                FS
+              </div>
+              <div className="flex flex-col">
+                <span className="font-display font-bold text-xl text-white leading-tight">
+                  {companyInfo.name}
+                </span>
+                <span className="text-xs text-gray-400 leading-tight">
+                  {companyInfo.slogan}
+                </span>
+              </div>
+            </Link>
+            <p className="text-sm text-gray-300 leading-relaxed mt-4">
               {companyInfo.mission}
             </p>
-            <p className="text-xs text-gray-400 italic">
+            <p className="text-xs text-primary italic">
               {companyInfo.tagline}
             </p>
           </div>
 
           {/* Navigation */}
           <div>
-            <h3 className="font-display font-semibold text-lg mb-4">
+            <h3 className="font-display font-semibold text-lg mb-4 text-white">
               Navigation
             </h3>
-            <ul className="space-y-2">
+            <ul className="space-y-3">
               {navigation.map((item) => (
                 <li key={item.name}>
                   <Link
                     href={item.href}
-                    className="text-sm text-gray-300 hover:text-white transition-colors"
+                    className="text-sm text-gray-300 hover:text-primary transition-colors duration-200"
                   >
                     {item.name}
                   </Link>
@@ -40,41 +52,34 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="font-display font-semibold text-lg mb-4">
+            <h3 className="font-display font-semibold text-lg mb-4 text-white">
               Contactez-nous
             </h3>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-3 text-gray-300">
-                <Phone className="h-4 w-4 shrink-0" />
-                <a
-                  href={`tel:${companyInfo.contact.phone}`}
-                  className="hover:text-white transition-colors"
-                >
+              <li className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
+                <Phone className="h-4 w-4 shrink-0 text-primary" />
+                <a href={`tel:${companyInfo.contact.phone}`}>
                   {companyInfo.contact.phone}
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-gray-300">
-                <Mail className="h-4 w-4 shrink-0" />
-                <a
-                  href={`mailto:${companyInfo.contact.email}`}
-                  className="hover:text-white transition-colors"
-                >
+              <li className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
+                <Mail className="h-4 w-4 shrink-0 text-primary" />
+                <a href={`mailto:${companyInfo.contact.email}`}>
                   {companyInfo.contact.email}
                 </a>
               </li>
-              <li className="flex items-center gap-3 text-gray-300">
-                <Globe className="h-4 w-4 shrink-0" />
+              <li className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
+                <Globe className="h-4 w-4 shrink-0 text-primary" />
                 <a
                   href={`https://${companyInfo.contact.website}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-white transition-colors"
                 >
                   {companyInfo.contact.website}
                 </a>
               </li>
               <li className="flex items-start gap-3 text-gray-300">
-                <MapPin className="h-4 w-4 shrink-0 mt-0.5" />
+                <MapPin className="h-4 w-4 shrink-0 mt-0.5 text-primary" />
                 <span>{companyInfo.contact.address}</span>
               </li>
             </ul>
@@ -82,7 +87,7 @@ export function Footer() {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+        <div className="border-t border-gray-700 mt-10 pt-8 text-center text-sm text-gray-400">
           <p>
             &copy; {new Date().getFullYear()} {companyInfo.name}. Tous droits
             réservés.
@@ -92,4 +97,3 @@ export function Footer() {
     </footer>
   );
 }
-

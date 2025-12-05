@@ -23,14 +23,7 @@ export const companyInfo = {
 export const navigation = [
   { name: "Accueil", href: "/" },
   { name: "À Propos", href: "/a-propos" },
-  {
-    name: "Services & Formations",
-    href: "/services-formations",
-    dropdown: [
-      { name: "Services", href: "/services-formations#services" },
-      { name: "Formations", href: "/services-formations#formations" },
-    ],
-  },
+  { name: "Services & Formations", href: "/services-formations" },
   { name: "Projets", href: "/projets" },
   { name: "Contact", href: "/contact" },
 ] as const;
