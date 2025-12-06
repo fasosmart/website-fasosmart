@@ -1,4 +1,4 @@
-import { Target, Eye, Rocket } from "lucide-react";
+import { Target, Eye, Rocket, Globe } from "lucide-react";
 import { companyInfo } from "@/lib/constants";
 
 export function MissionVision() {
@@ -19,14 +19,14 @@ export function MissionVision() {
           </p>
         </div>
 
-        {/* Cards */}
+        {/* Cards - Grid avec hauteur égale */}
         <div className="grid md:grid-cols-2 gap-8">
           {/* Mission Card */}
-          <div className="group relative bg-white rounded-2xl p-8 lg:p-10 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden">
+          <div className="group relative bg-white rounded-2xl p-8 lg:p-10 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col">
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
 
-            <div className="relative">
+            <div className="relative flex flex-col flex-1">
               <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Target className="w-8 h-8 text-white" />
               </div>
@@ -35,11 +35,11 @@ export function MissionVision() {
                 Notre Mission
               </h3>
 
-              <p className="text-gray-600 leading-relaxed text-lg">
+              <p className="text-gray-600 leading-relaxed text-lg flex-1">
                 {companyInfo.mission}
               </p>
 
-              {/* Decorative line */}
+              {/* Decorative line - alignée en bas */}
               <div className="mt-8 pt-6 border-t border-gray-100">
                 <div className="flex items-center gap-2 text-primary font-medium">
                   <Rocket className="w-5 h-5" />
@@ -50,12 +50,12 @@ export function MissionVision() {
           </div>
 
           {/* Vision Card */}
-          <div className="group relative bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-8 lg:p-10 text-white overflow-hidden">
+          <div className="group relative bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-8 lg:p-10 text-white overflow-hidden flex flex-col">
             {/* Background decoration */}
             <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
 
-            <div className="relative">
+            <div className="relative flex flex-col flex-1">
               <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Eye className="w-8 h-8" />
               </div>
@@ -64,11 +64,11 @@ export function MissionVision() {
                 Notre Vision
               </h3>
 
-              <p className="text-white/90 leading-relaxed text-lg">
+              <p className="text-white/90 leading-relaxed text-lg flex-1">
                 {companyInfo.vision}
               </p>
 
-              {/* Decorative line */}
+              {/* Decorative line - alignée en bas */}
               <div className="mt-8 pt-6 border-t border-white/20">
                 <div className="flex items-center gap-2 font-medium">
                   <Globe className="w-5 h-5" />
@@ -82,7 +82,3 @@ export function MissionVision() {
     </section>
   );
 }
-
-// Import manquant
-import { Globe } from "lucide-react";
-

@@ -40,7 +40,7 @@ export default function AboutPage() {
       <Objectives />
 
       {/* Partenaires */}
-      <Partners />
+      {/* <Partners /> */}
 
       {/* Contact CTA */}
       <ContactCTA />
