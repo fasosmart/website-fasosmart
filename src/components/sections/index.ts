@@ -19,3 +19,6 @@ export {
   Objectives,
 } from "./about";
 
+// Services & Formations page sections
+export { ServicesDetail, FormationsDetail } from "./services";
+
