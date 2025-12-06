@@ -3,7 +3,7 @@
  */
 
 export const companyInfo = {
-  name: "Fasosmart",
+  name: "FASOSMART",
   slogan: "THINK SMART - THINK REVOLUTION",
   tagline: "L'INNOVATION AU COEUR DE NOS ACTIVITÉS !",
   description:
