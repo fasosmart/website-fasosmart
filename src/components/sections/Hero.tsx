@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { companyInfo } from "@/lib/constants";
+import { companyInfo, stats } from "@/lib/constants";
 
 export function Hero() {
   return (
@@ -68,20 +68,20 @@ export function Hero() {
         <div className="mt-16 pt-16 border-t border-white/10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold mb-2">5+</div>
-              <div className="text-white/70 text-sm">Années d&apos;expérience</div>
+              <div className="text-3xl sm:text-4xl font-bold mb-2">{stats[0].value}</div>
+              <div className="text-white/70 text-sm">{stats[0].label}</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold mb-2">50+</div>
-              <div className="text-white/70 text-sm">Clients satisfaits</div>
+              <div className="text-3xl sm:text-4xl font-bold mb-2">{stats[1].value}</div>
+              <div className="text-white/70 text-sm">{stats[1].label}</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold mb-2">100+</div>
-              <div className="text-white/70 text-sm">Projets réalisés</div>
+              <div className="text-3xl sm:text-4xl font-bold mb-2">{stats[2].value}</div>
+              <div className="text-white/70 text-sm">{stats[2].label}</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl sm:text-4xl font-bold mb-2">10+</div>
-              <div className="text-white/70 text-sm">Partenaires</div>
+              <div className="text-3xl sm:text-4xl font-bold mb-2">{stats[3].value}</div>
+              <div className="text-white/70 text-sm">{stats[3].label}</div>
             </div>
           </div>
         </div>

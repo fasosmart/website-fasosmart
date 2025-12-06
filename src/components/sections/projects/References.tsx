@@ -1,5 +1,6 @@
 import { references } from "@/lib/data";
 import { Building2 } from "lucide-react";
+import { stats } from "@/lib/constants";
 
 export function References() {
   return (
@@ -59,21 +60,21 @@ export function References() {
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div className="text-center p-6 rounded-xl bg-white border border-gray-100">
             <div className="text-3xl font-bold text-primary mb-1">
-              {references.length}+
+              {stats[0].value}
             </div>
-            <div className="text-gray-600 text-sm">Clients satisfaits</div>
+            <div className="text-gray-600 text-sm">{stats[0].label}</div>
           </div>
           <div className="text-center p-6 rounded-xl bg-white border border-gray-100">
-            <div className="text-3xl font-bold text-primary mb-1">100+</div>
-            <div className="text-gray-600 text-sm">Projets réalisés</div>
+            <div className="text-3xl font-bold text-primary mb-1">{stats[1].value}</div>
+            <div className="text-gray-600 text-sm">{stats[1].label}</div>
           </div>
           <div className="text-center p-6 rounded-xl bg-white border border-gray-100">
-            <div className="text-3xl font-bold text-primary mb-1">5+</div>
-            <div className="text-gray-600 text-sm">Pays couverts</div>
+            <div className="text-3xl font-bold text-primary mb-1">{stats[2].value}</div>
+            <div className="text-gray-600 text-sm">{stats[2].label}</div>
           </div>
           <div className="text-center p-6 rounded-xl bg-white border border-gray-100">
-            <div className="text-3xl font-bold text-primary mb-1">98%</div>
-            <div className="text-gray-600 text-sm">Taux de satisfaction</div>
+            <div className="text-3xl font-bold text-primary mb-1">{stats[3].value}</div>
+            <div className="text-gray-600 text-sm">{stats[3].label}</div>
           </div>
         </div>
       </div>

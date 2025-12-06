@@ -1,5 +1,6 @@
 import { companyInfo } from "@/lib/constants";
 import { Building2, Users, Globe, Award } from "lucide-react";
+import { stats } from "@/lib/constants";
 
 export function AboutSection() {
   return (
@@ -41,32 +42,32 @@ export function AboutSection() {
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                 <Building2 className="w-6 h-6 text-primary" />
               </div>
-              <div className="text-3xl font-bold text-gray-900 mb-1">5+</div>
-              <div className="text-gray-600 text-sm">Années d&apos;expérience</div>
+              <div className="text-3xl font-bold text-gray-900 mb-1">{stats[0].value}</div>
+              <div className="text-gray-600 text-sm">{stats[0].label}</div>
             </div>
 
             <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/10">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                 <Users className="w-6 h-6 text-primary" />
               </div>
-              <div className="text-3xl font-bold text-gray-900 mb-1">50+</div>
-              <div className="text-gray-600 text-sm">Clients satisfaits</div>
+              <div className="text-3xl font-bold text-gray-900 mb-1">{stats[1].value}</div>
+              <div className="text-gray-600 text-sm">{stats[1].label}</div>
             </div>
 
             <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/10">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                 <Globe className="w-6 h-6 text-primary" />
               </div>
-              <div className="text-3xl font-bold text-gray-900 mb-1">100+</div>
-              <div className="text-gray-600 text-sm">Projets réalisés</div>
+              <div className="text-3xl font-bold text-gray-900 mb-1">{stats[2].value}</div>
+              <div className="text-gray-600 text-sm">{stats[2].label}</div>
             </div>
 
             <div className="p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/10">
               <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
                 <Award className="w-6 h-6 text-primary" />
               </div>
-              <div className="text-3xl font-bold text-gray-900 mb-1">10+</div>
-              <div className="text-gray-600 text-sm">Partenaires</div>
+              <div className="text-3xl font-bold text-gray-900 mb-1">{stats[3].value}</div>
+              <div className="text-gray-600 text-sm">{stats[3].label}</div>
             </div>
           </div>
         </div>

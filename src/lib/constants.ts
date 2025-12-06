@@ -28,3 +28,9 @@ export const navigation = [
   { name: "Contact", href: "/contact" },
 ] as const;
 
+export const stats = [
+  { value: "5+", label: "Années d'expérience" },
+  { value: "20+", label: "Clients satisfaits" },
+  { value: "80+", label: "Projets réalisés" },
+  { value: "10+", label: "Partenaires" },
+] as const;
