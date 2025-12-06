@@ -311,49 +311,49 @@ export const projects: Project[] = [
       "Équipement des centres communaux et régionaux",
     ],
   },
-  {
-    id: "makila-share",
-    title: "Plateforme de gestion des donneurs de sang",
-    client: "Makila Share - RDC Kinshasa",
-    category: "Développement d'applications",
-    description:
-      "Système complet de gestion des donneurs et demandeurs de sang pour faciliter les dons en RDC.",
-    features: [
-      "Base de données des donneurs",
-      "Système de mise en relation",
-      "Notifications en temps réel",
-      "Site web responsive",
-    ],
-  },
-  {
-    id: "guinee-gaz",
-    title: "Déploiement ERP & Sécurité",
-    client: "Guinée GAZ",
-    category: "Intégration ERP",
-    description:
-      "Mise en place d'une solution complète de gestion d'entreprise avec SAGE et systèmes de sécurité.",
-    features: [
-      "Déploiement SAGE I 100 Cloud",
-      "Comptabilité et commercial",
-      "Formation et assistance",
-      "Installation vidéosurveillance et pointage biométrique",
-    ],
-  },
-  {
-    id: "gmt",
-    title: "Infrastructure IT complète",
-    client: "Guinéo-Marocaine des Travaux (GMT)",
-    category: "Gestion de parc informatique",
-    description:
-      "Déploiement et gestion complète de l'infrastructure informatique pour une entreprise de BTP.",
-    features: [
-      "Gestion du parc informatique",
-      "Communication digitale",
-      "Déploiement VoiP",
-      "Sécurité électronique",
-      "Progiciel SAGE",
-    ],
-  },
+  // {
+  //   id: "makila-share",
+  //   title: "Plateforme de gestion des donneurs de sang",
+  //   client: "Makila Share - RDC Kinshasa",
+  //   category: "Développement d'applications",
+  //   description:
+  //     "Système complet de gestion des donneurs et demandeurs de sang pour faciliter les dons en RDC.",
+  //   features: [
+  //     "Base de données des donneurs",
+  //     "Système de mise en relation",
+  //     "Notifications en temps réel",
+  //     "Site web responsive",
+  //   ],
+  // },
+  // {
+  //   id: "guinee-gaz",
+  //   title: "Déploiement ERP & Sécurité",
+  //   client: "Guinée GAZ",
+  //   category: "Intégration ERP",
+  //   description:
+  //     "Mise en place d'une solution complète de gestion d'entreprise avec SAGE et systèmes de sécurité.",
+  //   features: [
+  //     "Déploiement SAGE I 100 Cloud",
+  //     "Comptabilité et commercial",
+  //     "Formation et assistance",
+  //     "Installation vidéosurveillance et pointage biométrique",
+  //   ],
+  // },
+  // {
+  //   id: "gmt",
+  //   title: "Infrastructure IT complète",
+  //   client: "Guinéo-Marocaine des Travaux (GMT)",
+  //   category: "Gestion de parc informatique",
+  //   description:
+  //     "Déploiement et gestion complète de l'infrastructure informatique pour une entreprise de BTP.",
+  //   features: [
+  //     "Gestion du parc informatique",
+  //     "Communication digitale",
+  //     "Déploiement VoiP",
+  //     "Sécurité électronique",
+  //     "Progiciel SAGE",
+  //   ],
+  // },
 ];
 
 // Statistiques (mockées)
