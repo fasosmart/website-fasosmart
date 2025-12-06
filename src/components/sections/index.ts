@@ -9,4 +9,13 @@ export { Formations } from "./Formations";
 export { Projects } from "./Projects";
 export { Partners } from "./Partners";
 export { ContactCTA } from "./ContactCTA";
+export { PageBanner } from "./PageBanner";
+
+// About page sections
+export {
+  AboutSection,
+  MissionVision,
+  Values,
+  Objectives,
+} from "./about";
 

@@ -1,9 +1,49 @@
+import { Metadata } from "next";
+import { Building2 } from "lucide-react";
+import {
+  PageBanner,
+  AboutSection,
+  MissionVision,
+  Values,
+  Objectives,
+  Partners,
+  ContactCTA,
+} from "@/components/sections";
+import { companyInfo } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  title: "À Propos",
+  description: companyInfo.mission,
+};
+
 export default function AboutPage() {
   return (
-    <div className="container mx-auto px-4 py-16">
-      <h1 className="text-4xl font-display font-bold text-[#4491CE] mb-8">À Propos</h1>
-      <p className="text-lg text-gray-600">Page À propos en construction</p>
-    </div>
+    <>
+      {/* Banner */}
+      <PageBanner
+        icon={Building2}
+        subtitle="À propos de nous"
+        title="Découvrez Fasosmart"
+        description={companyInfo.slogan + " - " + companyInfo.vision}
+      />
+
+      {/* À Propos Section */}
+      <AboutSection />
+
+      {/* Mission & Vision */}
+      <MissionVision />
+
+      {/* Valeurs */}
+      <Values />
+
+      {/* Objectifs */}
+      <Objectives />
+
+      {/* Partenaires */}
+      <Partners />
+
+      {/* Contact CTA */}
+      <ContactCTA />
+    </>
   );
 }
-
