@@ -25,26 +25,16 @@ export function ContactCTA() {
               d&apos;atteindre vos objectifs avec succès.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="bg-white text-primary hover:bg-white/90 font-semibold shadow-lg"
-              >
-                <Link href="/contact">
-                  Demander un devis
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Link>
-              </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 font-semibold"
-              >
-                <Link href="/contact">Nous contacter</Link>
-              </Button>
-            </div>
+            <Button
+              asChild
+              size="lg"
+              className="bg-white text-primary hover:bg-white/90 font-semibold shadow-lg"
+            >
+              <Link href="/contact">
+                Nous contacter
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Link>
+            </Button>
           </div>
 
           {/* Contact Info */}
