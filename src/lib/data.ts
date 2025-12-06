@@ -42,10 +42,18 @@ export interface Partner {
   logo?: string;
 }
 
+export interface Reference {
+  id: string;
+  name: string;
+  services: string[];
+  logo?: string;
+}
+
 export interface Project {
   id: string;
   title: string;
   client: string;
+  category: string;
   description: string;
   features: string[];
   image?: string;
@@ -169,7 +177,7 @@ export const formations: Formation[] = [
   },
 ];
 
-// Partenaires
+// Partenaires (Fournisseurs - Fasosmart achète chez eux)
 export const partners: Partner[] = [
   { id: "proline", name: "Proline" },
   { id: "alshiraa", name: "Al Shiraa Control Devices" },
@@ -183,19 +191,167 @@ export const partners: Partner[] = [
   { id: "wialon", name: "Wialon" },
 ];
 
-// Projets
+// Références (Clients - Ils achètent chez Fasosmart)
+export const references: Reference[] = [
+  {
+    id: "cciag",
+    name: "CCIAG",
+    services: ["Digitalisation", "Intégration paiement", "Cartes sécurisées"],
+  },
+  {
+    id: "west-african",
+    name: "West African Negoce",
+    services: ["Gestion du Parc informatique", "Communication Digital"],
+  },
+  {
+    id: "gmt",
+    name: "Guinéo-Marocaine des Travaux (GMT)",
+    services: ["Gestion Parc Informatique", "Communication Digitale", "Déploiement VoiP", "Sécurité Électronique"],
+  },
+  {
+    id: "tdss",
+    name: "TDSS",
+    services: ["Développement système biométrique", "Communication Digitale"],
+  },
+  {
+    id: "ageroute",
+    name: "AGEROUTE",
+    services: ["Fourniture matériel Informatique", "Visioconférence"],
+  },
+  {
+    id: "mairie-conakry",
+    name: "Mairie Nationale de Conakry",
+    services: ["Communication digitale", "Site Web", "Développement application"],
+  },
+  {
+    id: "makila-share",
+    name: "Makila Share",
+    services: ["Système de gestion donneurs de sang", "Site web"],
+  },
+  {
+    id: "ges",
+    name: "GES",
+    services: ["Système d'information", "Gestion RH", "Comptabilité"],
+  },
+  {
+    id: "socoser",
+    name: "SOCOSER Logistique",
+    services: ["Administration réseau", "Gestion parc informatique", "Implémentation ERP"],
+  },
+  {
+    id: "afrikhealth",
+    name: "Afrikhealth",
+    services: ["Solution de gestion patients", "Implémentation ERP", "Site web"],
+  },
+  {
+    id: "salsabil",
+    name: "SALSABIL (Mauritanie)",
+    services: ["Déploiement ERP", "Gestion ventes", "Paie & RH"],
+  },
+  {
+    id: "dalein",
+    name: "DALEIN TRANSPORT & BTP",
+    services: ["Système d'information", "Gestion flotte", "Comptabilité"],
+  },
+  {
+    id: "dynamic-mining",
+    name: "Dynamic Mining",
+    services: ["Fourniture matériel informatique", "Gestion automatique présences"],
+  },
+  {
+    id: "ctac",
+    name: "CTAC",
+    services: ["Fourniture matériel", "Site web", "Implémentation ERP"],
+  },
+  {
+    id: "global-optique",
+    name: "Global Optique Guinée",
+    services: ["Implémentation ERP", "Site web"],
+  },
+  {
+    id: "guinee-gaz",
+    name: "Guinée GAZ",
+    services: ["Déploiement SAGE", "Formation", "Vidéosurveillance"],
+  },
+  {
+    id: "metal-guinee",
+    name: "Groupe Metal Guinée",
+    services: ["Fourniture d'équipements", "Géolocalisation", "Gestion de flotte"],
+  },
+  {
+    id: "tanogui",
+    name: "Tanogui Group",
+    services: ["Fourniture d'équipements", "Géolocalisation", "Gestion de flotte"],
+  },
+  {
+    id: "uagcp",
+    name: "UAGCP",
+    services: ["Fourniture d'équipements", "Géolocalisation", "Gestion de flotte"],
+  },
+  {
+    id: "aguiser",
+    name: "AGUISER",
+    services: ["Site web", "Système d'alerte accidents"],
+  },
+];
+
+// Projets (En vedette)
 export const projects: Project[] = [
   {
-    id: "ciag",
+    id: "cciag",
     title: "Digitalisation de la carte d'adhésion",
-    client: "CIAG - Chambre de Commerce d'Industrie et d'Artisanat de Guinée",
+    client: "CCIAG - Chambre de Commerce d'Industrie et d'Artisanat de Guinée",
+    category: "Transformation Digitale",
     description:
-      "Projet BOT de digitalisation complète du système de gestion des adhésions.",
+      "Projet BOT de digitalisation complète du système de gestion des adhésions de la Chambre de Commerce.",
     features: [
       "Développement du système informatique",
       "Intégration des solutions de paiement",
       "Fournitures de cartes sécurisées",
       "Équipement des centres communaux et régionaux",
+    ],
+  },
+  {
+    id: "makila-share",
+    title: "Plateforme de gestion des donneurs de sang",
+    client: "Makila Share - RDC Kinshasa",
+    category: "Développement d'applications",
+    description:
+      "Système complet de gestion des donneurs et demandeurs de sang pour faciliter les dons en RDC.",
+    features: [
+      "Base de données des donneurs",
+      "Système de mise en relation",
+      "Notifications en temps réel",
+      "Site web responsive",
+    ],
+  },
+  {
+    id: "guinee-gaz",
+    title: "Déploiement ERP & Sécurité",
+    client: "Guinée GAZ",
+    category: "Intégration ERP",
+    description:
+      "Mise en place d'une solution complète de gestion d'entreprise avec SAGE et systèmes de sécurité.",
+    features: [
+      "Déploiement SAGE I 100 Cloud",
+      "Comptabilité et commercial",
+      "Formation et assistance",
+      "Installation vidéosurveillance et pointage biométrique",
+    ],
+  },
+  {
+    id: "gmt",
+    title: "Infrastructure IT complète",
+    client: "Guinéo-Marocaine des Travaux (GMT)",
+    category: "Gestion de parc informatique",
+    description:
+      "Déploiement et gestion complète de l'infrastructure informatique pour une entreprise de BTP.",
+    features: [
+      "Gestion du parc informatique",
+      "Communication digitale",
+      "Déploiement VoiP",
+      "Sécurité électronique",
+      "Progiciel SAGE",
     ],
   },
 ];

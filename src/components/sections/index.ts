@@ -22,3 +22,6 @@ export {
 // Services & Formations page sections
 export { ServicesDetail, FormationsDetail } from "./services";
 
+// Projects page sections
+export { ProjectsPortfolio, References } from "./projects";
+
