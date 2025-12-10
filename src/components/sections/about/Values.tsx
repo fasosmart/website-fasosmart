@@ -1,54 +1,127 @@
+"use client";
+
 import { Lightbulb, Star, Users, Shield } from "lucide-react";
+import { motion } from "framer-motion";
 import { values } from "@/lib/data";
 
 const valueIcons = [Lightbulb, Star, Users, Shield];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.9 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 export function Values() {
   return (
-    <section className="py-20 md:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
+    <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+      {/* Éléments décoratifs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header avec animations */}
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.span
+            className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.4 }}
+          >
             Ce qui nous définit
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-gray-900 mb-6">
+          </motion.span>
+          <motion.h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             Nos Valeurs
-          </h2>
-          <p className="text-lg text-gray-600">
+          </motion.h2>
+          <motion.p
+            className="text-lg text-gray-600"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
             Les principes fondamentaux qui guident chacune de nos actions et
             décisions au quotidien.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        {/* Values Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        {/* Values Grid avec animations */}
+        <motion.div
+          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
           {values.map((value, index) => {
             const Icon = valueIcons[index % valueIcons.length];
             return (
-              <div
+              <motion.div
                 key={index}
-                className="group relative bg-white rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-primary/20 text-center"
+                variants={cardVariants}
+                whileHover={{ y: -8, scale: 1.02 }}
+                className="group relative bg-white rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/30 text-center overflow-hidden"
               >
+                {/* Effet de brillance */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+
                 {/* Icon */}
-                <div className="w-16 h-16 mx-auto rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary group-hover:scale-110 transition-all duration-300">
+                <motion.div
+                  className="w-16 h-16 mx-auto rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-all duration-300 relative z-10"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <Icon className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
-                </div>
+                </motion.div>
 
                 {/* Content */}
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary transition-colors">
+                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary transition-colors relative z-10">
                   {value.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 text-sm leading-relaxed relative z-10">
                   {value.description}
                 </p>
 
                 {/* Hover decoration */}
-                <div className="absolute inset-x-0 bottom-0 h-1 bg-primary scale-x-0 group-hover:scale-x-100 transition-transform origin-left rounded-b-2xl" />
-              </div>
+                <motion.div
+                  className="absolute inset-x-0 bottom-0 h-1 bg-primary rounded-b-2xl"
+                  initial={{ scaleX: 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  transition={{ duration: 0.3 }}
+                />
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

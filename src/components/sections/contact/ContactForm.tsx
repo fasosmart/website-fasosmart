@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Send, CheckCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 export function ContactForm() {
@@ -19,33 +20,64 @@ export function ContactForm() {
     setIsSubmitted(true);
   };
 
-  if (isSubmitted) {
-    return (
-      <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm border border-gray-100">
-        <div className="text-center py-8">
-          <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
-            <CheckCircle className="w-8 h-8 text-green-600" />
-          </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">
-            Message envoyé !
-          </h3>
-          <p className="text-gray-600 mb-6">
-            Merci pour votre message. Notre équipe vous répondra dans les plus
-            brefs délais.
-          </p>
-          <Button
-            onClick={() => setIsSubmitted(false)}
-            variant="outline"
-          >
-            Envoyer un autre message
-          </Button>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm border border-gray-100">
+    <AnimatePresence mode="wait">
+      {isSubmitted ? (
+        <motion.div
+          key="success"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.9 }}
+          className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm border border-gray-100"
+        >
+          <div className="text-center py-8">
+            <motion.div
+              className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center"
+              initial={{ scale: 0 }}
+              animate={{ scale: 1 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+            >
+              <CheckCircle className="w-8 h-8 text-green-600" />
+            </motion.div>
+            <motion.h3
+              className="text-xl font-semibold text-gray-900 mb-2"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              Message envoyé !
+            </motion.h3>
+            <motion.p
+              className="text-gray-600 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              Merci pour votre message. Notre équipe vous répondra dans les plus
+              brefs délais.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <Button
+                onClick={() => setIsSubmitted(false)}
+                variant="outline"
+              >
+                Envoyer un autre message
+              </Button>
+            </motion.div>
+          </div>
+        </motion.div>
+      ) : (
+        <motion.div
+          key="form"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm border border-gray-100"
+        >
       <h2 className="text-2xl font-display font-bold text-gray-900 mb-2">
         Envoyez-nous un message
       </h2>
@@ -190,7 +222,9 @@ export function ContactForm() {
           utilisées pour vous recontacter.
         </p>
       </form>
-    </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 

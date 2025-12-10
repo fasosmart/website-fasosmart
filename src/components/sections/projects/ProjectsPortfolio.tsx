@@ -1,31 +1,92 @@
+"use client";
+
 import { projects } from "@/lib/data";
 import { CheckCircle, Layers } from "lucide-react";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.95 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.6,
+    },
+  },
+};
 
 export function ProjectsPortfolio() {
   return (
-    <section className="py-20 md:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="max-w-3xl mb-16">
-          <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
+    <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+      {/* Éléments décoratifs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header avec animations */}
+        <motion.div
+          className="max-w-3xl mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.span
+            className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.4 }}
+          >
             Projets en vedette
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-gray-900 mb-6">
+          </motion.span>
+          <motion.h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             Nos réalisations
-          </h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
+          </motion.h2>
+          <motion.p
+            className="text-lg text-gray-600 leading-relaxed"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
             Découvrez quelques-uns de nos projets phares qui illustrent notre
             expertise et notre capacité à répondre aux défis technologiques de
             nos clients.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        {/* Projects Grid - Portfolio Style */}
-        <div className="grid md:grid-cols-2 gap-8">
+        {/* Projects Grid avec animations */}
+        <motion.div
+          className="grid md:grid-cols-2 gap-8"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
           {projects.map((project, index) => (
-            <div
+            <motion.div
               key={project.id}
-              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100"
+              variants={cardVariants}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/30"
             >
               {/* Image Placeholder */}
               <div className="relative h-48 bg-gradient-to-br from-primary/10 via-primary/5 to-gray-100 overflow-hidden">
@@ -83,9 +144,9 @@ export function ProjectsPortfolio() {
                   )}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

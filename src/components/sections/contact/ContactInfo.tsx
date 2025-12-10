@@ -1,11 +1,25 @@
+"use client";
+
 import { Phone, Mail, MapPin, Clock, Globe } from "lucide-react";
+import { motion } from "framer-motion";
 import { companyInfo } from "@/lib/constants";
 
 export function ContactInfo() {
   return (
-    <div className="space-y-6">
+    <motion.div
+      className="space-y-6"
+      initial={{ opacity: 0, x: -50 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 0.6 }}
+    >
       {/* Intro */}
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
         <h2 className="text-2xl font-display font-bold text-gray-900 mb-3">
           Contactez-nous
         </h2>
@@ -13,86 +27,57 @@ export function ContactInfo() {
           Notre équipe est à votre disposition pour répondre à toutes vos
           questions et vous accompagner dans vos projets.
         </p>
-      </div>
+      </motion.div>
 
-      {/* Contact Cards */}
+      {/* Contact Cards avec animations */}
       <div className="space-y-4">
-        {/* Phone */}
-        <a
-          href={`tel:${companyInfo.contact.phone}`}
-          className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-100 hover:border-primary/20 hover:shadow-md transition-all group"
-        >
-          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors">
-            <Phone className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <p className="text-sm text-gray-500 mb-1">Téléphone</p>
-            <p className="font-semibold text-gray-900 group-hover:text-primary transition-colors">
-              {companyInfo.contact.phone}
-            </p>
-          </div>
-        </a>
-
-        {/* Email */}
-        <a
-          href={`mailto:${companyInfo.contact.email}`}
-          className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-100 hover:border-primary/20 hover:shadow-md transition-all group"
-        >
-          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors">
-            <Mail className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <p className="text-sm text-gray-500 mb-1">Email</p>
-            <p className="font-semibold text-gray-900 group-hover:text-primary transition-colors">
-              {companyInfo.contact.email}
-            </p>
-          </div>
-        </a>
-
-        {/* Website */}
-        <a
-          href={`https://${companyInfo.contact.website}`}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-100 hover:border-primary/20 hover:shadow-md transition-all group"
-        >
-          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors">
-            <Globe className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
-          </div>
-          <div>
-            <p className="text-sm text-gray-500 mb-1">Site web</p>
-            <p className="font-semibold text-gray-900 group-hover:text-primary transition-colors">
-              {companyInfo.contact.website}
-            </p>
-          </div>
-        </a>
-
-        {/* Address */}
-        <div className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-100">
-          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-            <MapPin className="w-5 h-5 text-primary" />
-          </div>
-          <div>
-            <p className="text-sm text-gray-500 mb-1">Adresse</p>
-            <p className="font-semibold text-gray-900">
-              {companyInfo.contact.address}
-            </p>
-          </div>
-        </div>
-
-        {/* Hours */}
-        <div className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-100">
-          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-            <Clock className="w-5 h-5 text-primary" />
-          </div>
-          <div>
-            <p className="text-sm text-gray-500 mb-1">Horaires</p>
-            <p className="font-semibold text-gray-900">Lun - Ven : 8h - 18h</p>
-            <p className="text-sm text-gray-500">Sam : 9h - 13h</p>
-          </div>
-        </div>
+        {[
+          { icon: Phone, label: "Téléphone", value: companyInfo.contact.phone, href: `tel:${companyInfo.contact.phone}`, clickable: true },
+          { icon: Mail, label: "Email", value: companyInfo.contact.email, href: `mailto:${companyInfo.contact.email}`, clickable: true },
+          { icon: Globe, label: "Site web", value: companyInfo.contact.website, href: `https://${companyInfo.contact.website}`, clickable: true },
+          { icon: MapPin, label: "Adresse", value: companyInfo.contact.address, href: null, clickable: false },
+          { icon: Clock, label: "Horaires", value: "Lun - Ven : 8h - 18h", value2: "Sam : 9h - 13h", href: null, clickable: false },
+        ].map((item, index) => {
+          const Icon = item.icon;
+          const Component = item.clickable ? "a" : "div";
+          return (
+            <motion.div
+              key={item.label}
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 + index * 0.1, duration: 0.4 }}
+            >
+              <Component
+                href={item.href || undefined}
+                target={item.clickable && item.href?.startsWith("http") ? "_blank" : undefined}
+                rel={item.clickable && item.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+                className={`flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-100 transition-all group ${
+                  item.clickable ? "hover:border-primary/30 hover:shadow-lg cursor-pointer" : ""
+                }`}
+              >
+                <motion.div
+                  className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
+                </motion.div>
+                <div>
+                  <p className="text-sm text-gray-500 mb-1">{item.label}</p>
+                  <p className={`font-semibold ${item.clickable ? "text-gray-900 group-hover:text-primary transition-colors" : "text-gray-900"}`}>
+                    {item.value}
+                  </p>
+                  {item.value2 && (
+                    <p className="text-sm text-gray-500">{item.value2}</p>
+                  )}
+                </div>
+              </Component>
+            </motion.div>
+          );
+        })}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

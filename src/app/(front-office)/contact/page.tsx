@@ -1,10 +1,11 @@
 import { Metadata } from "next";
-import { MessageSquare } from "lucide-react";
 import {
   PageBanner,
   ContactInfo,
   ContactForm,
 } from "@/components/sections";
+import { SectionTransition } from "@/components/shared/SectionTransition";
+import { MessageSquare } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -17,11 +18,14 @@ export default function ContactPage() {
     <>
       {/* Banner */}
       <PageBanner
-        icon={MessageSquare}
+        icon="MessageSquare"
         subtitle="Parlons de votre projet"
         title="Contactez-nous"
         description="Notre équipe est à votre écoute pour vous accompagner dans vos projets de transformation digitale."
       />
+
+      {/* Transition */}
+      <SectionTransition variant="wave" className="text-white" />
 
       {/* Contact Section */}
       <section className="py-20 md:py-28 bg-gray-50">

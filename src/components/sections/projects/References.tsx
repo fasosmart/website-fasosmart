@@ -1,31 +1,120 @@
+"use client";
+
 import { references } from "@/lib/data";
 import { Building2 } from "lucide-react";
+import { motion } from "framer-motion";
 import { stats } from "@/lib/constants";
+import { useCounter } from "@/hooks/useCounter";
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.4,
+    },
+  },
+};
+
+function AnimatedStat({ value, label, index }: { value: string; label: string; index: number }) {
+  const numericValue = parseInt(value.replace(/\D/g, "")) || 0;
+  const suffix = value.replace(/\d/g, "");
+  const { ref, formattedValue } = useCounter(numericValue, {
+    duration: 2000,
+    suffix,
+    start: 0,
+  });
+
+  return (
+    <motion.div
+      ref={ref}
+      className="text-center p-6 rounded-xl bg-white border border-gray-100"
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{
+        delay: index * 0.1,
+        duration: 0.5,
+      }}
+      whileHover={{ y: -8, scale: 1.05 }}
+    >
+      <div className="text-3xl font-bold text-primary mb-1">{formattedValue}</div>
+      <div className="text-gray-600 text-sm">{label}</div>
+    </motion.div>
+  );
+}
 
 export function References() {
   return (
-    <section className="py-20 md:py-28 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
+    <section className="py-20 md:py-28 bg-gray-50 relative overflow-hidden">
+      {/* Éléments décoratifs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header avec animations */}
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.span
+            className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.4 }}
+          >
             Nos Références
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-gray-900 mb-6">
+          </motion.span>
+          <motion.h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             Ils nous ont fait confiance
-          </h2>
-          <p className="text-lg text-gray-600">
+          </motion.h2>
+          <motion.p
+            className="text-lg text-gray-600"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
             Plus de {references.length} entreprises et institutions nous ont
             choisis pour leurs projets de transformation digitale.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        {/* References Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 lg:gap-6">
+        {/* References Grid avec animations */}
+        <motion.div
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 lg:gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
           {references.map((reference) => (
-            <div
+            <motion.div
               key={reference.id}
-              className="group relative bg-white rounded-xl p-4 lg:p-5 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-primary/20"
+              variants={cardVariants}
+              whileHover={{ y: -8, scale: 1.05 }}
+              className="group relative bg-white rounded-xl p-4 lg:p-5 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-primary/30"
             >
               {/* Logo placeholder */}
               <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center group-hover:from-primary group-hover:to-primary-dark transition-all duration-300">
@@ -52,30 +141,20 @@ export function References() {
                 {/* Arrow */}
                 <div className="absolute left-1/2 -translate-x-1/2 top-full w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900" />
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Stats */}
+        {/* Stats avec compteurs animés */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div className="text-center p-6 rounded-xl bg-white border border-gray-100">
-            <div className="text-3xl font-bold text-primary mb-1">
-              {stats[0].value}
-            </div>
-            <div className="text-gray-600 text-sm">{stats[0].label}</div>
-          </div>
-          <div className="text-center p-6 rounded-xl bg-white border border-gray-100">
-            <div className="text-3xl font-bold text-primary mb-1">{stats[1].value}</div>
-            <div className="text-gray-600 text-sm">{stats[1].label}</div>
-          </div>
-          <div className="text-center p-6 rounded-xl bg-white border border-gray-100">
-            <div className="text-3xl font-bold text-primary mb-1">{stats[2].value}</div>
-            <div className="text-gray-600 text-sm">{stats[2].label}</div>
-          </div>
-          <div className="text-center p-6 rounded-xl bg-white border border-gray-100">
-            <div className="text-3xl font-bold text-primary mb-1">{stats[3].value}</div>
-            <div className="text-gray-600 text-sm">{stats[3].label}</div>
-          </div>
+          {stats.map((stat, index) => (
+            <AnimatedStat
+              key={stat.label}
+              value={stat.value}
+              label={stat.label}
+              index={index}
+            />
+          ))}
         </div>
       </div>
     </section>

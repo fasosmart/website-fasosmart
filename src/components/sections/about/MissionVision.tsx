@@ -1,35 +1,89 @@
+"use client";
+
 import { Target, Eye, Rocket, Globe } from "lucide-react";
+import { motion } from "framer-motion";
 import { companyInfo } from "@/lib/constants";
 
 export function MissionVision() {
   return (
-    <section className="py-20 md:py-28 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
+    <section className="py-20 md:py-28 bg-gray-50 relative overflow-hidden">
+      {/* Éléments décoratifs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary-turquoise/5 rounded-full blur-3xl" />
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header avec animations */}
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.span
+            className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.4 }}
+          >
             Notre raison d&apos;être
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-display font-bold text-gray-900 mb-6">
+          </motion.span>
+          <motion.h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+          >
             Mission & Vision
-          </h2>
-          <p className="text-lg text-gray-600">
+          </motion.h2>
+          <motion.p
+            className="text-lg text-gray-600"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.6 }}
+          >
             Guidés par notre passion pour l&apos;innovation, nous œuvrons pour un
             avenir technologique accessible à tous.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
-        {/* Cards - Grid avec hauteur égale */}
+        {/* Cards avec animations */}
         <div className="grid md:grid-cols-2 gap-8">
           {/* Mission Card */}
-          <div className="group relative bg-white rounded-2xl p-8 lg:p-10 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 overflow-hidden flex flex-col">
-            {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-primary/10 transition-colors" />
+          <motion.div
+            className="group relative bg-white rounded-2xl p-8 lg:p-10 shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/30 overflow-hidden flex flex-col"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ y: -8 }}
+          >
+            {/* Background decoration animé */}
+            <motion.div
+              className="absolute top-0 right-0 w-40 h-40 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.5, 0.3],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
 
             <div className="relative flex flex-col flex-1">
-              <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <motion.div
+                className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center mb-6"
+                whileHover={{ rotate: 360, scale: 1.1 }}
+                transition={{ duration: 0.6 }}
+              >
                 <Target className="w-8 h-8 text-white" />
-              </div>
+              </motion.div>
 
               <h3 className="text-2xl font-display font-bold text-gray-900 mb-4">
                 Notre Mission
@@ -39,26 +93,63 @@ export function MissionVision() {
                 {companyInfo.mission}
               </p>
 
-              {/* Decorative line - alignée en bas */}
+              {/* Decorative line */}
               <div className="mt-8 pt-6 border-t border-gray-100">
-                <div className="flex items-center gap-2 text-primary font-medium">
+                <motion.div
+                  className="flex items-center gap-2 text-primary font-medium"
+                  whileHover={{ x: 8 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <Rocket className="w-5 h-5" />
                   <span>Stimuler la productivité</span>
-                </div>
+                </motion.div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Vision Card */}
-          <div className="group relative bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-8 lg:p-10 text-white overflow-hidden flex flex-col">
-            {/* Background decoration */}
-            <div className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2" />
+          <motion.div
+            className="group relative bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-8 lg:p-10 text-white overflow-hidden flex flex-col"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ y: -8 }}
+          >
+            {/* Background decoration animé */}
+            <motion.div
+              className="absolute top-0 right-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"
+              animate={{
+                scale: [1, 1.3, 1],
+                opacity: [0.2, 0.4, 0.2],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+            <motion.div
+              className="absolute bottom-0 left-0 w-32 h-32 bg-white/5 rounded-full blur-2xl translate-y-1/2 -translate-x-1/2"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.1, 0.3, 0.1],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
 
             <div className="relative flex flex-col flex-1">
-              <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+              <motion.div
+                className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center mb-6"
+                whileHover={{ rotate: 360, scale: 1.1 }}
+                transition={{ duration: 0.6 }}
+              >
                 <Eye className="w-8 h-8" />
-              </div>
+              </motion.div>
 
               <h3 className="text-2xl font-display font-bold mb-4">
                 Notre Vision
@@ -68,15 +159,19 @@ export function MissionVision() {
                 {companyInfo.vision}
               </p>
 
-              {/* Decorative line - alignée en bas */}
+              {/* Decorative line */}
               <div className="mt-8 pt-6 border-t border-white/20">
-                <div className="flex items-center gap-2 font-medium">
+                <motion.div
+                  className="flex items-center gap-2 font-medium"
+                  whileHover={{ x: 8 }}
+                  transition={{ duration: 0.3 }}
+                >
                   <Globe className="w-5 h-5" />
                   <span>Leader panafricain</span>
-                </div>
+                </motion.div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
