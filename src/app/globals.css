@@ -96,18 +96,50 @@
 
 /* Utilitaires personnalisés */
 @layer utilities {
-  .animate-fade-in {
-    animation: fade-in 0.3s ease-out;
+  /* Glassmorphism */
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
-}
 
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
+  .glass-dark {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
+
+  /* Gradient animé */
+  .gradient-animated {
+    background: linear-gradient(
+      -45deg,
+      #4491ce,
+      #0e76bc,
+      #1087a4,
+      #063251
+    );
+    background-size: 400% 400%;
+    animation: gradient-shift 8s ease infinite;
+  }
+
+  /* Texte avec gradient */
+  .text-gradient {
+    background: linear-gradient(135deg, #4491ce 0%, #0e76bc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Respect du préférence reduced-motion */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }

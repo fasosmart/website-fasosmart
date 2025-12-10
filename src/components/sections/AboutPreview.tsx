@@ -1,32 +1,73 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight, Target, Eye, Lightbulb } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { companyInfo } from "@/lib/constants";
 
 export function AboutPreview() {
   return (
-    <section className="py-20 md:py-28 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 md:py-28 bg-white relative overflow-hidden">
+      {/* Éléments décoratifs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      </div>
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Content */}
-          <div>
-            <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
+          {/* Content avec animations */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.span
+              className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.4 }}
+            >
               À propos de nous
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-display font-bold text-gray-900 mb-6">
+            </motion.span>
+            <motion.h2
+              className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 0.6 }}
+            >
               Une entreprise panafricaine au service de la révolution
               technologique
-            </h2>
-            <p className="text-lg text-gray-600 leading-relaxed mb-8">
+            </motion.h2>
+            <motion.p
+              className="text-lg text-gray-600 leading-relaxed mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+            >
               {companyInfo.mission}
-            </p>
+            </motion.p>
 
-            {/* Mission & Vision Cards */}
+            {/* Mission & Vision Cards avec animations */}
             <div className="space-y-4 mb-8">
-              <div className="flex gap-4 p-4 rounded-xl bg-primary/5 border border-primary/10">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Target className="w-6 h-6 text-primary" />
-                </div>
+              <motion.div
+                className="flex gap-4 p-4 rounded-xl bg-primary/5 border border-primary/10 group hover:bg-primary/10 transition-colors"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                whileHover={{ scale: 1.02, x: 8 }}
+              >
+                <motion.div
+                  className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Target className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+                </motion.div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">
                     Notre Mission
@@ -36,75 +77,148 @@ export function AboutPreview() {
                     stimuler la productivité.
                   </p>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex gap-4 p-4 rounded-xl bg-primary/5 border border-primary/10">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <Eye className="w-6 h-6 text-primary" />
-                </div>
+              <motion.div
+                className="flex gap-4 p-4 rounded-xl bg-primary/5 border border-primary/10 group hover:bg-primary/10 transition-colors"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6, duration: 0.5 }}
+                whileHover={{ scale: 1.02, x: 8 }}
+              >
+                <motion.div
+                  className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary transition-colors"
+                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Eye className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+                </motion.div>
                 <div>
                   <h3 className="font-semibold text-gray-900 mb-1">
                     Notre Vision
                   </h3>
                   <p className="text-sm text-gray-600">{companyInfo.vision}</p>
                 </div>
-              </div>
+              </motion.div>
             </div>
 
-            <Button asChild size="lg" className="font-semibold">
-              <Link href="/a-propos">
-                En savoir plus
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Link>
-            </Button>
-          </div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.7, duration: 0.6 }}
+            >
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button asChild size="lg" className="font-semibold">
+                  <Link href="/a-propos" className="flex items-center">
+                    En savoir plus
+                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                </Button>
+              </motion.div>
+            </motion.div>
+          </motion.div>
 
-          {/* Visual */}
-          <div className="relative">
-            <div className="relative bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 lg:p-12">
-              {/* Decorative elements */}
-              <div className="absolute top-4 right-4 w-20 h-20 bg-primary/10 rounded-full blur-2xl" />
-              <div className="absolute bottom-4 left-4 w-32 h-32 bg-primary/10 rounded-full blur-2xl" />
+          {/* Visual avec animations */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.div
+              className="relative bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 lg:p-12 overflow-hidden"
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+            >
+              {/* Decorative elements animés */}
+              <motion.div
+                className="absolute top-4 right-4 w-20 h-20 bg-primary/10 rounded-full blur-2xl"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.3, 0.5, 0.3],
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+              <motion.div
+                className="absolute bottom-4 left-4 w-32 h-32 bg-primary/10 rounded-full blur-2xl"
+                animate={{
+                  scale: [1, 1.3, 1],
+                  opacity: [0.2, 0.4, 0.2],
+                }}
+                transition={{
+                  duration: 5,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
 
               <div className="relative space-y-6">
-                {/* Values preview */}
-                <div className="bg-white rounded-xl p-6 shadow-lg">
+                {/* Values preview avec animation */}
+                <motion.div
+                  className="bg-white rounded-xl p-6 shadow-lg"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3, duration: 0.5 }}
+                  whileHover={{ y: -4 }}
+                  style={{ boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1)" }}
+                >
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+                    <motion.div
+                      className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center"
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.6 }}
+                    >
                       <Lightbulb className="w-5 h-5 text-white" />
-                    </div>
+                    </motion.div>
                     <h3 className="font-semibold text-gray-900">Nos Valeurs</h3>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="text-sm text-gray-600 flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-primary" />
-                      Innovation
-                    </div>
-                    <div className="text-sm text-gray-600 flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-primary" />
-                      Excellence
-                    </div>
-                    <div className="text-sm text-gray-600 flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-primary" />
-                      Collaboration
-                    </div>
-                    <div className="text-sm text-gray-600 flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-primary" />
-                      Intégrité
-                    </div>
+                    {["Innovation", "Excellence", "Collaboration", "Intégrité"].map(
+                      (value, index) => (
+                        <motion.div
+                          key={value}
+                          className="text-sm text-gray-600 flex items-center gap-2"
+                          initial={{ opacity: 0, x: -10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: 0.4 + index * 0.1, duration: 0.4 }}
+                        >
+                          <motion.span
+                            className="w-2 h-2 rounded-full bg-primary"
+                            whileHover={{ scale: 1.5 }}
+                          />
+                          {value}
+                        </motion.div>
+                      )
+                    )}
                   </div>
-                </div>
+                </motion.div>
 
-                {/* Quote */}
-                <div className="bg-primary text-white rounded-xl p-6">
+                {/* Quote avec animation */}
+                <motion.div
+                  className="bg-primary text-white rounded-xl p-6"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.5, duration: 0.5 }}
+                  whileHover={{ scale: 1.02 }}
+                >
                   <p className="text-lg font-medium italic leading-relaxed">
                     &ldquo;Quels que soient vos besoins, notre équipe dévouée est là
                     pour vous guider à chaque étape du processus.&rdquo;
                   </p>
-                </div>
+                </motion.div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </section>

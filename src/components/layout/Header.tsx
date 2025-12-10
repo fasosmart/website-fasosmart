@@ -44,13 +44,15 @@ export function Header() {
 
   return (
     <>
-      {/* Header principal */}
+      {/* Header principal avec glassmorphism amélioré */}
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50",
-          "bg-white/95 backdrop-blur-md border-b border-gray-200/50",
-          "transition-shadow duration-300",
-          isScrolled && "shadow-lg"
+          "bg-white/80 backdrop-blur-xl border-b border-gray-200/30",
+          "transition-all duration-500",
+          isScrolled
+            ? "shadow-xl bg-white/95 backdrop-blur-2xl border-gray-200/50"
+            : "shadow-none"
         )}
       >
         <div className="container mx-auto ">
