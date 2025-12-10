@@ -178,7 +178,7 @@ export function Projects() {
               Découvrez l&apos;ensemble de nos réalisations et références clients.
             </p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button asChild variant="outline" className="border-2 hover:border-primary hover:bg-primary hover:text-white transition-all">
+              <Button asChild variant="outline" className="border-2 hover:border-primary hover:bg-primary hover:text-primary transition-all">
                 <Link href="/projets">Voir tous les projets</Link>
               </Button>
             </motion.div>
