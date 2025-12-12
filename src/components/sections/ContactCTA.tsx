@@ -8,7 +8,7 @@ import { companyInfo } from "@/lib/constants";
 
 export function ContactCTA() {
   return (
-    <section className="py-20 md:py-28 gradient-animated text-white relative overflow-hidden">
+    <section className="py-24 md:py-32 lg:py-40 gradient-animated text-white relative overflow-hidden">
       {/* Background Pattern animé */}
       <div className="absolute inset-0 opacity-20">
         <motion.div
@@ -25,7 +25,8 @@ export function ContactCTA() {
           }}
         />
         <motion.div
-          className="absolute bottom-0 left-0 w-72 h-72 bg-white rounded-full blur-3xl"
+          className="absolute left-0 w-72 h-72 bg-white rounded-full blur-3xl"
+          style={{ bottom: "10%" }}
           animate={{
             x: [0, -100, 0],
             y: [0, 50, 0],
