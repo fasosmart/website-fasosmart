@@ -25,7 +25,7 @@ export function SectionTransition({
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
         >
-          <motion.path
+          {/* <motion.path
             d="M0,60 C240,20 480,100 720,60 C960,20 1200,100 1440,60 L1440,120 L0,120 Z"
             fill="currentColor"
             initial={{ d: "M0,60 C240,20 480,100 720,60 C960,20 1200,100 1440,60 L1440,120 L0,120 Z" }}
@@ -41,7 +41,7 @@ export function SectionTransition({
               repeat: Infinity,
               ease: "easeInOut",
             }}
-          />
+          /> */}
         </svg>
       </div>
     );
