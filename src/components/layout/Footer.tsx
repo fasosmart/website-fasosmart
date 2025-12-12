@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Phone, Mail, Globe, MapPin } from "lucide-react";
+import { Logo } from "@/components/shared/Logo";
 import { companyInfo, navigation } from "@/lib/constants";
 
 export function Footer() {
@@ -10,19 +11,7 @@ export function Footer() {
           {/* Company Info */}
           <div className="space-y-4">
             {/* Logo Footer */}
-            <Link href="/" className="flex items-center gap-3 group">
-              <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-primary text-white font-bold text-xl transition-transform group-hover:scale-105">
-                FS
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-xl text-white leading-tight">
-                  {companyInfo.name}
-                </span>
-                <span className="text-xs text-gray-400 leading-tight">
-                  {companyInfo.slogan}
-                </span>
-              </div>
-            </Link>
+            <Logo variant="footer" showText={false} showSlogan={false} />
             <p className="text-sm text-gray-300 leading-relaxed mt-4">
               {companyInfo.mission}
             </p>

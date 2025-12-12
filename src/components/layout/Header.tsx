@@ -58,7 +58,8 @@ export function Header() {
         <div className="container mx-auto ">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <Logo />
+            <Logo variant="header" showText={false} showSlogan={false} />
+
 
             {/* Navigation desktop */}
             <nav className="hidden lg:flex items-center gap-8">
