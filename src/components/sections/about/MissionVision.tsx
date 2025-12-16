@@ -6,7 +6,7 @@ import { companyInfo } from "@/lib/constants";
 
 export function MissionVision() {
   return (
-    <section className="py-24 md:py-32 bg-gray-50 relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Éléments décoratifs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -31,7 +31,7 @@ export function MissionVision() {
             Notre raison d&apos;être
           </motion.span>
           <motion.h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -40,7 +40,7 @@ export function MissionVision() {
             Mission & Vision
           </motion.h2>
           <motion.p
-            className="text-lg text-gray-600"
+            className="text-lg text-muted-foreground"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -55,7 +55,7 @@ export function MissionVision() {
         <div className="grid md:grid-cols-2 gap-8">
           {/* Mission Card */}
           <motion.div
-            className="group relative bg-white rounded-2xl p-8 lg:p-10 shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/30 overflow-hidden flex flex-col"
+            className="group relative bg-card text-card-foreground rounded-2xl p-8 lg:p-10 shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/40 overflow-hidden flex flex-col"
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -85,11 +85,11 @@ export function MissionVision() {
                 <Target className="w-8 h-8 text-white" />
               </motion.div>
 
-              <h3 className="text-2xl font-display font-bold text-gray-900 mb-4">
+              <h3 className="text-2xl font-display font-bold text-foreground mb-4">
                 Notre Mission
               </h3>
 
-              <p className="text-gray-600 leading-relaxed text-lg flex-1">
+              <p className="text-muted-foreground leading-relaxed text-lg flex-1">
                 {companyInfo.mission}
               </p>
 

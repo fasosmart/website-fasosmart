@@ -56,8 +56,8 @@ export function Projects() {
           >
             Nos Projets
           </motion.span>
-            <motion.h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6"
+          <motion.h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -65,8 +65,8 @@ export function Projects() {
           >
             Des projets qui font la différence
           </motion.h2>
-            <motion.p
-              className="text-lg text-muted-foreground"
+          <motion.p
+            className="text-lg text-muted-foreground"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -93,7 +93,7 @@ export function Projects() {
                 y: -8,
                 transition: { duration: 0.3 },
               }}
-              className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/30"
+              className="group relative bg-card text-card-foreground rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/40"
             >
               {/* Effet de brillance */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 z-10" />
@@ -132,7 +132,9 @@ export function Projects() {
 
               {/* Project Content */}
               <div className="p-6 relative z-10">
-                <p className="text-gray-600 mb-6 leading-relaxed">{project.description}</p>
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  {project.description}
+                </p>
 
                 <div className="space-y-3">
                   {project.features.map((feature, index) => (
@@ -150,7 +152,7 @@ export function Projects() {
                       >
                         <CheckCircle className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                       </motion.div>
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-foreground">{feature}</span>
                     </motion.div>
                   ))}
                 </div>
@@ -160,7 +162,7 @@ export function Projects() {
 
           {/* Placeholder pour plus de projets avec animation */}
           <motion.div
-            className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 flex flex-col items-center justify-center text-center border-2 border-dashed border-gray-300 hover:border-primary/30 transition-all duration-300 group"
+            className="bg-gradient-to-br from-background to-card rounded-2xl p-8 flex flex-col items-center justify-center text-center border-2 border-dashed border-border hover:border-primary/40 transition-all duration-300 group"
             variants={cardVariants}
             whileHover={{ scale: 1.02, borderColor: "rgba(68, 145, 206, 0.3)" }}
           >
@@ -171,14 +173,18 @@ export function Projects() {
             >
               <ArrowRight className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
             </motion.div>
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+            <h3 className="text-xl font-semibold text-foreground mb-2">
               Plus de projets
             </h3>
-            <p className="text-gray-600 mb-6">
+            <p className="text-muted-foreground mb-6">
               Découvrez l&apos;ensemble de nos réalisations et références clients.
             </p>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button asChild variant="outline" className="border-2 hover:border-primary hover:bg-primary hover:text-primary transition-all">
+              <Button
+                asChild
+                variant="outline"
+                className="border-2 border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all"
+              >
                 <Link href="/projets">Voir tous les projets</Link>
               </Button>
             </motion.div>

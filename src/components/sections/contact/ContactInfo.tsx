@@ -20,10 +20,10 @@ export function ContactInfo() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-2xl font-display font-bold text-gray-900 mb-3">
+        <h2 className="text-2xl font-display font-bold text-foreground mb-3">
           Contactez-nous
         </h2>
-        <p className="text-gray-600">
+        <p className="text-muted-foreground">
           Notre équipe est à votre disposition pour répondre à toutes vos
           questions et vous accompagner dans vos projets.
         </p>
@@ -50,10 +50,20 @@ export function ContactInfo() {
             >
               <Component
                 href={item.href || undefined}
-                target={item.clickable && item.href?.startsWith("http") ? "_blank" : undefined}
-                rel={item.clickable && item.href?.startsWith("http") ? "noopener noreferrer" : undefined}
-                className={`flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-100 transition-all group ${
-                  item.clickable ? "hover:border-primary/30 hover:shadow-lg cursor-pointer" : ""
+                target={
+                  item.clickable && item.href?.startsWith("http")
+                    ? "_blank"
+                    : undefined
+                }
+                rel={
+                  item.clickable && item.href?.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
+                className={`flex items-start gap-4 p-4 rounded-xl bg-card border border-border transition-all group ${
+                  item.clickable
+                    ? "hover:border-primary/40 hover:shadow-lg cursor-pointer"
+                    : ""
                 }`}
               >
                 <motion.div
@@ -64,12 +74,22 @@ export function ContactInfo() {
                   <Icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                 </motion.div>
                 <div>
-                  <p className="text-sm text-gray-500 mb-1">{item.label}</p>
-                  <p className={`font-semibold ${item.clickable ? "text-gray-900 group-hover:text-primary transition-colors" : "text-gray-900"}`}>
+                  <p className="text-sm text-muted-foreground mb-1">
+                    {item.label}
+                  </p>
+                  <p
+                    className={`font-semibold ${
+                      item.clickable
+                        ? "text-foreground group-hover:text-primary transition-colors"
+                        : "text-foreground"
+                    }`}
+                  >
                     {item.value}
                   </p>
                   {item.value2 && (
-                    <p className="text-sm text-gray-500">{item.value2}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {item.value2}
+                    </p>
                   )}
                 </div>
               </Component>

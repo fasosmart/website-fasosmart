@@ -28,33 +28,35 @@ export default function ContactPage() {
       <SectionTransition variant="wave" className="text-white" />
 
       {/* Contact Section */}
-      <section className="py-24 md:py-32 bg-gray-50">
+      <section className="py-24 md:py-32 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
-            {/* Contact Info - 2 columns */}
-            <div className="lg:col-span-2">
-              <ContactInfo />
-            </div>
+          <div className="rounded-3xl border border-border/40 bg-card/5 shadow-sm backdrop-blur-sm px-6 py-8 md:px-10 md:py-12">
+            <div className="grid lg:grid-cols-5 gap-10 lg:gap-14 items-start">
+              {/* Contact Info - 2 columns */}
+              <div className="lg:col-span-2">
+                <ContactInfo />
+              </div>
 
-            {/* Contact Form - 3 columns */}
-            <div className="lg:col-span-3">
-              <ContactForm />
+              {/* Contact Form - 3 columns */}
+              <div className="lg:col-span-3">
+                <ContactForm />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Map placeholder */}
-      <section className="h-80 bg-gradient-to-br from-primary/5 to-primary/10 relative">
+      <section className="h-80 bg-gradient-to-br from-background to-primary-dark/30 relative border-t border-border/40">
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
               <MessageSquare className="w-8 h-8 text-primary" />
             </div>
-            <p className="text-gray-600">
+            <p className="text-muted-foreground">
               Carte Google Maps à intégrer ultérieurement
             </p>
-            <p className="text-sm text-gray-400 mt-1">
+            <p className="text-sm text-muted-foreground/80 mt-1">
               Guinée Conakry, Quartier Kobaya
             </p>
           </div>

@@ -29,7 +29,7 @@ function AnimatedStatCard({
   return (
     <motion.div
       ref={ref}
-      className="p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/10 group hover:border-primary/30 transition-all"
+      className="p-6 rounded-2xl bg-gradient-to-br from-primary/5 to-primary/10 border border-primary/20 group hover:border-primary/40 transition-all"
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -46,15 +46,17 @@ function AnimatedStatCard({
       >
         <Icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
       </motion.div>
-      <div className="text-3xl font-bold text-gray-900 mb-1">{formattedValue}</div>
-      <div className="text-gray-600 text-sm">{label}</div>
+      <div className="text-3xl font-bold text-foreground mb-1">
+        {formattedValue}
+      </div>
+      <div className="text-muted-foreground text-sm">{label}</div>
     </motion.div>
   );
 }
 
 export function AboutSection() {
   return (
-    <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Éléments décoratifs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -78,7 +80,7 @@ export function AboutSection() {
               Qui sommes-nous ?
             </motion.span>
             <motion.h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6"
+              className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -87,14 +89,14 @@ export function AboutSection() {
               Une entreprise panafricaine au service de l&apos;innovation
             </motion.h2>
             <motion.div
-              className="space-y-4 text-gray-600 leading-relaxed"
+              className="space-y-4 text-muted-foreground leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
               <p>
-                Chez <strong className="text-gray-900">Fasosmart</strong>, nous
+                Chez <strong className="text-foreground">Fasosmart</strong>, nous
                 travaillons en étroite collaboration avec vous pour personnaliser
                 nos services en fonction de vos exigences spécifiques.
               </p>

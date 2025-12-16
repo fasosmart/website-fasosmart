@@ -39,7 +39,7 @@ function AnimatedStat({ value, label, index }: { value: string; label: string; i
   return (
     <motion.div
       ref={ref}
-      className="text-center p-6 rounded-xl bg-white border border-gray-100"
+      className="text-center p-6 rounded-xl bg-card border border-border"
       initial={{ opacity: 0, scale: 0.8 }}
       whileInView={{ opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-100px" }}
@@ -50,14 +50,14 @@ function AnimatedStat({ value, label, index }: { value: string; label: string; i
       whileHover={{ y: -8, scale: 1.05 }}
     >
       <div className="text-3xl font-bold text-primary mb-1">{formattedValue}</div>
-      <div className="text-gray-600 text-sm">{label}</div>
+      <div className="text-muted-foreground text-sm">{label}</div>
     </motion.div>
   );
 }
 
 export function References() {
   return (
-    <section className="py-24 md:py-32 bg-gray-50 relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Éléments décoratifs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -81,7 +81,7 @@ export function References() {
             Nos Références
           </motion.span>
           <motion.h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -90,7 +90,7 @@ export function References() {
             Ils nous ont fait confiance
           </motion.h2>
           <motion.p
-            className="text-lg text-gray-600"
+            className="text-lg text-muted-foreground"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -114,7 +114,7 @@ export function References() {
               key={reference.id}
               variants={cardVariants}
               whileHover={{ y: -8, scale: 1.05 }}
-              className="group relative bg-white rounded-xl p-4 lg:p-5 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-primary/30"
+              className="group relative bg-card text-card-foreground rounded-xl p-4 lg:p-5 shadow-sm hover:shadow-xl transition-all duration-300 border border-border hover:border-primary/40"
             >
               {/* Logo placeholder */}
               <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center group-hover:from-primary group-hover:to-primary-dark transition-all duration-300">
@@ -124,7 +124,7 @@ export function References() {
               </div>
 
               {/* Name */}
-              <h3 className="text-sm font-semibold text-gray-900 text-center mb-2 line-clamp-2 group-hover:text-primary transition-colors">
+              <h3 className="text-sm font-semibold text-foreground text-center mb-2 line-clamp-2 group-hover:text-primary transition-colors">
                 {reference.name}
               </h3>
 

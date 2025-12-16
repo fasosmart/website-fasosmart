@@ -28,7 +28,7 @@ export function ContactForm() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.9 }}
-          className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm border border-gray-100"
+          className="bg-card rounded-2xl p-8 lg:p-10 shadow-sm border border-border"
         >
           <div className="text-center py-8">
             <motion.div
@@ -40,7 +40,7 @@ export function ContactForm() {
               <CheckCircle className="w-8 h-8 text-green-600" />
             </motion.div>
             <motion.h3
-              className="text-xl font-semibold text-gray-900 mb-2"
+              className="text-xl font-semibold text-foreground mb-2"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
@@ -48,7 +48,7 @@ export function ContactForm() {
               Message envoyé !
             </motion.h3>
             <motion.p
-              className="text-gray-600 mb-6"
+              className="text-muted-foreground mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -76,12 +76,12 @@ export function ContactForm() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
-          className="bg-white rounded-2xl p-8 lg:p-10 shadow-sm border border-gray-100"
+          className="bg-card rounded-2xl p-8 lg:p-10 shadow-sm border border-border"
         >
-      <h2 className="text-2xl font-display font-bold text-gray-900 mb-2">
+      <h2 className="text-2xl font-display font-bold text-foreground mb-2">
         Envoyez-nous un message
       </h2>
-      <p className="text-gray-600 mb-6">
+      <p className="text-muted-foreground mb-6">
         Remplissez le formulaire ci-dessous et nous vous répondrons rapidement.
       </p>
 
@@ -91,7 +91,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="name"
-              className="block text-sm font-medium text-gray-700 mb-2"
+              className="block text-sm font-medium text-foreground mb-2"
             >
               Nom complet *
             </label>
@@ -101,13 +101,13 @@ export function ContactForm() {
               name="name"
               required
               placeholder="Votre nom"
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              className="w-full px-4 py-3 rounded-xl border border-input bg-background/80 dark:bg-input/30 focus:border-primary focus:ring-2 focus:ring-ring/30 outline-none transition-all"
             />
           </div>
           <div>
             <label
               htmlFor="email"
-              className="block text-sm font-medium text-gray-700 mb-2"
+              className="block text-sm font-medium text-foreground mb-2"
             >
               Email *
             </label>
@@ -117,7 +117,7 @@ export function ContactForm() {
               name="email"
               required
               placeholder="votre@email.com"
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              className="w-full px-4 py-3 rounded-xl border border-input bg-background/80 dark:bg-input/30 focus:border-primary focus:ring-2 focus:ring-ring/30 outline-none transition-all"
             />
           </div>
         </div>
@@ -127,7 +127,7 @@ export function ContactForm() {
           <div>
             <label
               htmlFor="phone"
-              className="block text-sm font-medium text-gray-700 mb-2"
+              className="block text-sm font-medium text-foreground mb-2"
             >
               Téléphone
             </label>
@@ -136,13 +136,13 @@ export function ContactForm() {
               id="phone"
               name="phone"
               placeholder="+224 XXX XXX XXX"
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              className="w-full px-4 py-3 rounded-xl border border-input bg-background/80 dark:bg-input/30 focus:border-primary focus:ring-2 focus:ring-ring/30 outline-none transition-all"
             />
           </div>
           <div>
             <label
               htmlFor="company"
-              className="block text-sm font-medium text-gray-700 mb-2"
+              className="block text-sm font-medium text-foreground mb-2"
             >
               Entreprise
             </label>
@@ -151,7 +151,7 @@ export function ContactForm() {
               id="company"
               name="company"
               placeholder="Nom de votre entreprise"
-              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+              className="w-full px-4 py-3 rounded-xl border border-input bg-background/80 dark:bg-input/30 focus:border-primary focus:ring-2 focus:ring-ring/30 outline-none transition-all"
             />
           </div>
         </div>
@@ -160,7 +160,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="subject"
-            className="block text-sm font-medium text-gray-700 mb-2"
+            className="block text-sm font-medium text-foreground mb-2"
           >
             Sujet *
           </label>
@@ -168,7 +168,7 @@ export function ContactForm() {
             id="subject"
             name="subject"
             required
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all bg-white"
+            className="w-full px-4 py-3 rounded-xl border border-input bg-background/80 dark:bg-input/40 focus:border-primary focus:ring-2 focus:ring-ring/30 outline-none transition-all"
           >
             <option value="">Sélectionnez un sujet</option>
             <option value="services">Demande d&apos;information sur les services</option>
@@ -183,7 +183,7 @@ export function ContactForm() {
         <div>
           <label
             htmlFor="message"
-            className="block text-sm font-medium text-gray-700 mb-2"
+            className="block text-sm font-medium text-foreground mb-2"
           >
             Message *
           </label>
@@ -193,7 +193,7 @@ export function ContactForm() {
             required
             rows={5}
             placeholder="Décrivez votre projet ou votre demande..."
-            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
+            className="w-full px-4 py-3 rounded-xl border border-input bg-background/80 dark:bg-input/40 focus:border-primary focus:ring-2 focus:ring-ring/30 outline-none transition-all resize-none"
           />
         </div>
 
@@ -217,7 +217,7 @@ export function ContactForm() {
           )}
         </Button>
 
-        <p className="text-xs text-gray-500 text-center">
+        <p className="text-xs text-muted-foreground text-center">
           En soumettant ce formulaire, vous acceptez que vos données soient
           utilisées pour vous recontacter.
         </p>

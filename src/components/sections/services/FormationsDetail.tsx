@@ -28,7 +28,10 @@ const cardVariants = {
 
 export function FormationsDetail() {
   return (
-    <section id="formations" className="py-24 md:py-32 bg-gray-50 scroll-mt-20 relative overflow-hidden">
+    <section
+      id="formations"
+      className="py-24 md:py-32 bg-background scroll-mt-20 relative overflow-hidden"
+    >
       {/* Éléments décoratifs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -52,7 +55,7 @@ export function FormationsDetail() {
             Nos Formations
           </motion.span>
           <motion.h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -61,7 +64,7 @@ export function FormationsDetail() {
             Développez vos compétences
           </motion.h2>
           <motion.p
-            className="text-lg text-gray-600 leading-relaxed"
+            className="text-lg text-muted-foreground leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -88,7 +91,7 @@ export function FormationsDetail() {
                 key={formation.id}
                 variants={cardVariants}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/30"
+                className="group relative bg-card text-card-foreground rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/40"
               >
                 {/* Left border accent */}
                 <motion.div
@@ -109,10 +112,10 @@ export function FormationsDetail() {
                   </motion.div>
 
                   {/* Content */}
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
                     {formation.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {formation.description}
                   </p>
                 </div>

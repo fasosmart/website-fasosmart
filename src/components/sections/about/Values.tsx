@@ -30,7 +30,7 @@ const cardVariants = {
 
 export function Values() {
   return (
-    <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Éléments décoratifs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -54,7 +54,7 @@ export function Values() {
             Ce qui nous définit
           </motion.span>
           <motion.h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -63,7 +63,7 @@ export function Values() {
             Nos Valeurs
           </motion.h2>
           <motion.p
-            className="text-lg text-gray-600"
+            className="text-lg text-muted-foreground"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -89,7 +89,7 @@ export function Values() {
                 key={index}
                 variants={cardVariants}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative bg-white rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/30 text-center overflow-hidden"
+                className="group relative bg-card text-card-foreground rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/40 text-center overflow-hidden"
               >
                 {/* Effet de brillance */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -104,10 +104,10 @@ export function Values() {
                 </motion.div>
 
                 {/* Content */}
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-primary transition-colors relative z-10">
+                <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors relative z-10">
                   {value.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed relative z-10">
+                <p className="text-muted-foreground text-sm leading-relaxed relative z-10">
                   {value.description}
                 </p>
 

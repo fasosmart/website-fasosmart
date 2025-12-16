@@ -8,7 +8,7 @@ import { objectives } from "@/lib/data";
 
 export function Objectives() {
   return (
-    <section className="py-24 md:py-32 bg-gray-50 relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Éléments décoratifs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -31,8 +31,8 @@ export function Objectives() {
             >
               Nos ambitions
             </motion.span>
-            <motion.h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6"
+          <motion.h2
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -40,8 +40,8 @@ export function Objectives() {
             >
               Nos Objectifs
             </motion.h2>
-            <motion.p
-              className="text-lg text-gray-600 leading-relaxed mb-8"
+          <motion.p
+            className="text-lg text-muted-foreground leading-relaxed mb-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -56,7 +56,7 @@ export function Objectives() {
               {objectives.map((objective, index) => (
                 <motion.div
                   key={index}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-100 hover:border-primary/30 hover:shadow-lg transition-all group"
+                  className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border hover:border-primary/40 hover:shadow-lg transition-all group"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -70,7 +70,7 @@ export function Objectives() {
                   >
                     <CheckCircle className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                   </motion.div>
-                  <p className="text-gray-700 leading-relaxed">{objective}</p>
+                  <p className="text-foreground leading-relaxed">{objective}</p>
                 </motion.div>
               ))}
             </div>

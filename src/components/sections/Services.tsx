@@ -34,11 +34,11 @@ export function Services() {
   const displayedServices = services.slice(0, 4);
 
   return (
-    <section className="py-24 md:py-32 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-gradient-to-b from-background to-background relative overflow-hidden">
       {/* Éléments décoratifs en arrière-plan */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-turquoise/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl dark:bg-primary/20" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-turquoise/10 rounded-full blur-3xl dark:bg-primary-turquoise/20" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -99,7 +99,7 @@ export function Services() {
                   scale: 1.02,
                   transition: { duration: 0.3 },
                 }}
-                className="group relative bg-card text-foreground rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/30 overflow-hidden"
+                className="group relative bg-card text-card-foreground rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/40 overflow-hidden"
               >
                 {/* Effet de brillance au hover */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -116,7 +116,7 @@ export function Services() {
                   }}
                   transition={{ duration: 0.6 }}
                 >
-                  <Icon className="w-7 h-7 text-primary group-hover:text-white transition-colors relative z-10" />
+                  <Icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors relative z-10" />
                   {/* Glow effect */}
                   <div className="absolute inset-0 bg-primary/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity" />
                 </motion.div>
@@ -157,7 +157,7 @@ export function Services() {
               asChild
               size="lg"
               variant="outline"
-              className="font-semibold border-2 hover:border-primary hover:bg-primary hover:text-white transition-all duration-300"
+              className="font-semibold border-2 border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
             >
               <Link
                 href="/services-formations#services"

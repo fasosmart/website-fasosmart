@@ -62,7 +62,7 @@ export function Formations() {
                 return (
                   <motion.div
                     key={formation.id}
-                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-white transition-colors group cursor-pointer"
+                    className="flex items-center gap-3 p-3 rounded-lg hover:bg-card transition-colors group cursor-pointer"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
