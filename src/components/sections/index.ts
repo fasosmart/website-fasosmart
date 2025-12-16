@@ -26,5 +26,5 @@ export { ServicesDetail, FormationsDetail } from "./services";
 export { ProjectsPortfolio, References } from "./projects";
 
 // Contact page sections
-export { ContactInfo, ContactForm } from "./contact";
+export { ContactInfo, ContactForm, Map } from "./contact";
 

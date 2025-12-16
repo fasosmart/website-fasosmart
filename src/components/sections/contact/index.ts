@@ -4,4 +4,5 @@
 
 export { ContactInfo } from "./ContactInfo";
 export { ContactForm } from "./ContactForm";
+export { Map } from "./Map";
 

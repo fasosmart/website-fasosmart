@@ -3,9 +3,9 @@ import {
   PageBanner,
   ContactInfo,
   ContactForm,
+  Map,
 } from "@/components/sections";
 import { SectionTransition } from "@/components/shared/SectionTransition";
-import { MessageSquare } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -46,20 +46,14 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map placeholder */}
-      <section className="h-80 bg-gradient-to-br from-background to-primary-dark/30 relative border-t border-border/40">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
-              <MessageSquare className="w-8 h-8 text-primary" />
-            </div>
-            <p className="text-muted-foreground">
-              Carte Google Maps à intégrer ultérieurement
-            </p>
-            <p className="text-sm text-muted-foreground/80 mt-1">
-              Guinée Conakry, Quartier Kobaya
-            </p>
-          </div>
+      {/* Map Section */}
+      <section className="py-0 bg-background border-t border-border/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <Map 
+            height="h-80 md:h-96" 
+            zoom={15}
+            popupText="Fasosmart - Guinée Conakry, Quartier Kobaya"
+          />
         </div>
       </section>
     </>
