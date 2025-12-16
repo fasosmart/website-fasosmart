@@ -7,6 +7,7 @@ import { Menu, X, Phone, Mail } from "lucide-react";
 import { Logo } from "@/components/shared/Logo";
 import { navigation, companyInfo } from "@/lib/constants";
 import { cn } from "@/lib/utils";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -48,10 +49,10 @@ export function Header() {
       <header
         className={cn(
           "fixed top-0 left-0 right-0 z-50",
-          "bg-white/80 backdrop-blur-xl border-b border-gray-200/30",
+          "bg-background/80 backdrop-blur-xl border-b border-border/30",
           "transition-all duration-500",
           isScrolled
-            ? "shadow-xl bg-white/95 backdrop-blur-2xl border-gray-200/50"
+            ? "shadow-xl bg-background/95 backdrop-blur-2xl border-border/50"
             : "shadow-none"
         )}
       >
@@ -60,43 +61,49 @@ export function Header() {
             {/* Logo */}
             <Logo variant="header" showText={false} showSlogan={false} />
 
+            <div className="flex items-center gap-4">
+              {/* Navigation desktop */}
+              <nav className="hidden lg:flex items-center gap-8">
+                {navigation.map((item) => (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={cn(
+                      "relative py-2 text-sm font-medium transition-colors duration-200",
+                      isActive(item.href)
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-primary"
+                    )}
+                  >
+                    {item.name}
+                    {/* Tiret sous le lien actif */}
+                    {isActive(item.href) && (
+                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                    )}
+                  </Link>
+                ))}
+              </nav>
 
-            {/* Navigation desktop */}
-            <nav className="hidden lg:flex items-center gap-8">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={cn(
-                    "relative py-2 text-sm font-medium transition-colors duration-200",
-                    isActive(item.href)
-                      ? "text-primary"
-                      : "text-gray-600 hover:text-primary"
-                  )}
-                >
-                  {item.name}
-                  {/* Tiret sous le lien actif */}
-                  {isActive(item.href) && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
-                  )}
-                </Link>
-              ))}
-            </nav>
+              {/* Toggle thème */}
+              <div className="hidden lg:block">
+                <ThemeToggle />
+              </div>
 
-            {/* Bouton hamburger mobile */}
-            <button
-              type="button"
-              aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
-              aria-expanded={isOpen}
-              onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-gray-100 transition-colors"
-            >
-              {isOpen ? (
-                <X className="w-6 h-6 text-gray-700" />
-              ) : (
-                <Menu className="w-6 h-6 text-gray-700" />
-              )}
-            </button>
+              {/* Bouton hamburger mobile */}
+              <button
+                type="button"
+                aria-label={isOpen ? "Fermer le menu" : "Ouvrir le menu"}
+                aria-expanded={isOpen}
+                onClick={() => setIsOpen(!isOpen)}
+                className="lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg hover:bg-accent transition-colors"
+              >
+                {isOpen ? (
+                  <X className="w-6 h-6 text-foreground" />
+                ) : (
+                  <Menu className="w-6 h-6 text-foreground" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
       </header>
@@ -113,7 +120,7 @@ export function Header() {
       <div
         className={cn(
           "fixed top-16 md:top-20 left-0 right-0 bottom-0 z-40 lg:hidden",
-          "bg-white overflow-y-auto",
+          "bg-background overflow-y-auto",
           "transition-transform duration-300 ease-in-out",
           isOpen ? "translate-x-0" : "translate-x-full"
         )}
@@ -130,7 +137,7 @@ export function Header() {
                   "block px-4 py-3 rounded-xl text-base font-medium transition-all",
                   isActive(item.href)
                     ? "text-primary bg-primary/10 border-l-4 border-primary"
-                    : "text-gray-700 hover:text-primary hover:bg-gray-50"
+                    : "text-foreground hover:text-primary hover:bg-secondary"
                 )}
               >
                 {item.name}
@@ -139,7 +146,12 @@ export function Header() {
           </nav>
 
           {/* Séparateur */}
-          <div className="my-6 h-px bg-gray-200" />
+          <div className="my-6 h-px bg-border" />
+
+          {/* Toggle thème mobile */}
+          <div className="mb-6 flex justify-start px-4">
+            <ThemeToggle />
+          </div>
 
           {/* Contact rapide mobile */}
           <div className="p-4 rounded-xl bg-gradient-to-br from-primary/5 to-primary/10">

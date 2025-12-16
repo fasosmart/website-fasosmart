@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 // Importation des styles globaux
 import "./globals.css";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 // Chargement de la police Inter, assignée à la variable CSS --font-inter
 const inter = Inter({
@@ -68,10 +69,8 @@ export default function RootLayout({
     // Langue du document définie sur français, avec gestion de l'hydratation
     <html lang="fr" suppressHydrationWarning>
       {/* Classes CSS pour activer les polices et l'anticrénelage */}
-      <body
-        className={`${inter.variable} ${poppins.variable} antialiased`}
-      >
-        {children}
+      <body className={`${inter.variable} ${poppins.variable} antialiased`}>
+        <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
   );

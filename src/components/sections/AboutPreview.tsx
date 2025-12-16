@@ -8,7 +8,7 @@ import { companyInfo } from "@/lib/constants";
 
 export function AboutPreview() {
   return (
-    <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Éléments décoratifs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -32,7 +32,7 @@ export function AboutPreview() {
               À propos de nous
             </motion.span>
             <motion.h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6"
+              className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -42,7 +42,7 @@ export function AboutPreview() {
               technologique
             </motion.h2>
             <motion.p
-              className="text-lg text-gray-600 leading-relaxed mb-8"
+              className="text-lg text-muted-foreground leading-relaxed mb-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -69,10 +69,10 @@ export function AboutPreview() {
                   <Target className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
                 </motion.div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">
+                  <h3 className="font-semibold text-foreground mb-1">
                     Notre Mission
                   </h3>
-                  <p className="text-sm text-gray-600">
+                  <p className="text-sm text-muted-foreground">
                     Démocratiser l&apos;utilisation des solutions technologiques pour
                     stimuler la productivité.
                   </p>
@@ -95,10 +95,12 @@ export function AboutPreview() {
                   <Eye className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
                 </motion.div>
                 <div>
-                  <h3 className="font-semibold text-gray-900 mb-1">
+                  <h3 className="font-semibold text-foreground mb-1">
                     Notre Vision
                   </h3>
-                  <p className="text-sm text-gray-600">{companyInfo.vision}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {companyInfo.vision}
+                  </p>
                 </div>
               </motion.div>
             </div>
@@ -159,10 +161,10 @@ export function AboutPreview() {
                 }}
               />
 
-              <div className="relative space-y-6">
+                <div className="relative space-y-6">
                 {/* Values preview avec animation */}
                 <motion.div
-                  className="bg-white rounded-xl p-6 shadow-lg"
+                  className="bg-card text-foreground rounded-xl p-6 shadow-lg border border-border"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -178,14 +180,16 @@ export function AboutPreview() {
                     >
                       <Lightbulb className="w-5 h-5 text-white" />
                     </motion.div>
-                    <h3 className="font-semibold text-gray-900">Nos Valeurs</h3>
+                    <h3 className="font-semibold text-foreground">
+                      Nos Valeurs
+                    </h3>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     {["Innovation", "Excellence", "Collaboration", "Intégrité"].map(
                       (value, index) => (
                         <motion.div
                           key={value}
-                          className="text-sm text-gray-600 flex items-center gap-2"
+                          className="text-sm text-muted-foreground flex items-center gap-2"
                           initial={{ opacity: 0, x: -10 }}
                           whileInView={{ opacity: 1, x: 0 }}
                           viewport={{ once: true }}

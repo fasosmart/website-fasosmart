@@ -60,7 +60,7 @@ export function Services() {
             Nos Services
           </motion.span>
           <motion.h2
-            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -69,7 +69,7 @@ export function Services() {
             Des solutions technologiques adaptées à vos besoins
           </motion.h2>
           <motion.p
-            className="text-lg text-gray-600"
+            className="text-lg text-muted-foreground"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -99,7 +99,7 @@ export function Services() {
                   scale: 1.02,
                   transition: { duration: 0.3 },
                 }}
-                className="group relative bg-white rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:border-primary/30 overflow-hidden"
+                className="group relative bg-card text-foreground rounded-2xl p-6 shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/30 overflow-hidden"
               >
                 {/* Effet de brillance au hover */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
@@ -122,10 +122,10 @@ export function Services() {
                 </motion.div>
 
                 {/* Content */}
-                <h3 className="text-lg font-semibold text-gray-900 mb-3 group-hover:text-primary transition-colors relative z-10">
+                <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors relative z-10">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed relative z-10">
+                <p className="text-muted-foreground text-sm leading-relaxed relative z-10">
                   {service.description}
                 </p>
 

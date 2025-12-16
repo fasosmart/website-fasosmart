@@ -11,7 +11,7 @@ export function Formations() {
   const displayedFormations = formations.slice(0, 4);
 
   return (
-    <section className="py-24 md:py-32 bg-white relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-background relative overflow-hidden">
       {/* Éléments décoratifs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
@@ -35,7 +35,7 @@ export function Formations() {
               Nos Formations
             </motion.span>
             <motion.h2
-              className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-6"
+              className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -44,7 +44,7 @@ export function Formations() {
               Développez vos compétences avec nos formations professionnelles
             </motion.h2>
             <motion.p
-              className="text-lg text-gray-600 leading-relaxed mb-8"
+              className="text-lg text-muted-foreground leading-relaxed mb-8"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -76,7 +76,7 @@ export function Formations() {
                     >
                       <Icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                     </motion.div>
-                    <span className="font-medium text-gray-900">
+                    <span className="font-medium text-foreground">
                       {formation.title}
                     </span>
                   </motion.div>
