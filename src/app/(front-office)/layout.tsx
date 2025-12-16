@@ -2,6 +2,8 @@
 import { Header } from "@/components/layout/Header";
 // Importation du composant Footer
 import { Footer } from "@/components/layout/Footer";
+// Importation du composant ScrollToTop
+import { ScrollToTop } from "@/components/shared/ScrollToTop";
 
 export default function FrontOfficeLayout({
   children,
@@ -13,6 +15,7 @@ export default function FrontOfficeLayout({
       <Header />
       <main className="min-h-screen container mx-auto">{children}</main>
       <Footer />
+      <ScrollToTop />
     </>
   );
 }
