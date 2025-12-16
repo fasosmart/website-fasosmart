@@ -49,11 +49,7 @@ export default function ContactPage() {
       {/* Map Section */}
       <section className="py-0 bg-background border-t border-border/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <Map 
-            height="h-80 md:h-96" 
-            zoom={15}
-            popupText="Fasosmart - Guinée Conakry, Quartier Kobaya"
-          />
+          <Map />
         </div>
       </section>
     </>
