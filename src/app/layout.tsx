@@ -23,7 +23,7 @@ const poppins = Poppins({
 // Métadonnées du site pour SEO et réseaux sociaux
 export const metadata: Metadata = {
   title: {
-    default: "FASOSMART - Des solutions technologiques pour stimuler votre productivité",
+    default: "FASOSMART - L'innovation au cœur de nos activités !",
     template: "%s | Fasosmart", // Modèle de titre pour les sous-pages
   },
   description:
