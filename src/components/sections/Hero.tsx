@@ -218,7 +218,7 @@ export function Hero() {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 hover:border-white/50 font-semibold backdrop-blur-sm"
+                className="border-white/30 text-primary hover:bg-white/10 hover:border-white/50 font-semibold backdrop-blur-sm"
               >
                 <Link href="/contact">Nous contacter</Link>
               </Button>
