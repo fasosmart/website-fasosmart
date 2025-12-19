@@ -113,26 +113,31 @@ export function PageBanner({
           initial="hidden"
           animate="visible"
         >
-          {/* Icon avec animation */}
-          {Icon && (
+          {/* Icon et Subtitle alignés horizontalement */}
+          {(Icon || subtitle) && (
             <motion.div
               variants={itemVariants}
-              className="inline-flex items-center justify-center w-16 h-16 rounded-2xl glass border border-white/20 mb-6"
-              whileHover={{ scale: 1.1, rotate: 360 }}
-              transition={{ duration: 0.6 }}
+              className="flex items-center gap-4 mb-6"
             >
-              <Icon className="w-8 h-8" />
-            </motion.div>
-          )}
+              {Icon && (
+                <motion.div
+                  className="inline-flex items-center justify-center w-16 h-16 rounded-2xl glass border border-white/20 shrink-0"
+                  whileHover={{ scale: 1.1, rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Icon className="w-8 h-8" />
+                </motion.div>
+              )}
 
-          {/* Subtitle */}
-          {subtitle && (
-            <motion.span
-              variants={itemVariants}
-              className="inline-block text-white/90 font-medium text-sm uppercase tracking-wider mb-4"
-            >
-              {subtitle}
-            </motion.span>
+              {subtitle && (
+                <motion.span
+                  variants={itemVariants}
+                  className="text-white/90 font-medium text-sm uppercase tracking-wider"
+                >
+                  {subtitle}
+                </motion.span>
+              )}
+            </motion.div>
           )}
 
           {/* Title */}
