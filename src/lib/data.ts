@@ -27,6 +27,8 @@ export interface Service {
   title: string;
   description: string;
   icon: LucideIcon;
+  // Données pour le verso de la carte (flip card)
+  methodology?: string[]; // Méthodologie/processus/cycle de vie du service
 }
 
 export interface Formation {
@@ -34,6 +36,11 @@ export interface Formation {
   title: string;
   description: string;
   icon: LucideIcon;
+  // Données pour le verso de la carte (flip card)
+  prerequisites?: string[]; // Prérequis pour suivre la formation
+  skills?: string[]; // Compétences développées
+  duration?: string; // Durée de la formation
+  price?: string; // Prix de la formation
 }
 
 export interface Partner {
@@ -72,6 +79,14 @@ export const services: Service[] = [
     description:
       "Conception et développement d'applications web et mobiles sur mesure pour répondre à vos besoins spécifiques.",
     icon: Code,
+    methodology: [
+      "Analyse des besoins et cahier des charges",
+      "Conception UX/UI et architecture technique",
+      "Développement agile (sprints itératifs)",
+      "Tests et validation qualité",
+      "Déploiement et mise en production",
+      "Maintenance et évolutions continues",
+    ],
   },
   {
     id: "parc-info",
@@ -79,6 +94,14 @@ export const services: Service[] = [
     description:
       "Gestion complète de votre infrastructure informatique : maintenance, support et optimisation.",
     icon: Monitor,
+    methodology: [
+      "Audit complet du parc existant",
+      "Planification et stratégie d'optimisation",
+      "Installation et configuration des équipements",
+      "Monitoring et maintenance préventive",
+      "Support technique 24/7",
+      "Mise à jour et évolution continue",
+    ],
   },
   {
     id: "securite",
@@ -86,6 +109,14 @@ export const services: Service[] = [
     description:
       "Solutions de sécurité avancées : vidéosurveillance, contrôle d'accès et systèmes d'alarme.",
     icon: Shield,
+    methodology: [
+      "Analyse des risques et besoins sécuritaires",
+      "Conception du système de sécurité",
+      "Installation des équipements",
+      "Configuration et paramétrage",
+      "Formation des utilisateurs",
+      "Maintenance et support technique",
+    ],
   },
   {
     id: "reseaux",
@@ -93,6 +124,14 @@ export const services: Service[] = [
     description:
       "Installation, configuration et maintenance de réseaux d'entreprise performants et sécurisés.",
     icon: Network,
+    methodology: [
+      "Étude de faisabilité et planification",
+      "Conception de l'architecture réseau",
+      "Installation des équipements",
+      "Configuration et sécurisation",
+      "Tests de performance et validation",
+      "Documentation et formation",
+    ],
   },
   {
     id: "communication",
@@ -100,6 +139,14 @@ export const services: Service[] = [
     description:
       "Stratégies de communication digitale : sites web, réseaux sociaux et marketing en ligne.",
     icon: Megaphone,
+    methodology: [
+      "Audit de présence digitale",
+      "Stratégie de communication",
+      "Création de contenu et design",
+      "Développement et déploiement",
+      "Campagnes marketing et promotion",
+      "Analyse et optimisation continue",
+    ],
   },
   {
     id: "telematique",
@@ -107,6 +154,14 @@ export const services: Service[] = [
     description:
       "Solutions de géolocalisation et de gestion de flottes pour optimiser vos opérations.",
     icon: Radio,
+    methodology: [
+      "Analyse des besoins de géolocalisation",
+      "Sélection des équipements adaptés",
+      "Installation et configuration",
+      "Intégration avec systèmes existants",
+      "Formation des utilisateurs",
+      "Suivi et optimisation des performances",
+    ],
   },
   {
     id: "energie",
@@ -114,6 +169,14 @@ export const services: Service[] = [
     description:
       "Installation de solutions énergétiques durables : panneaux solaires et systèmes autonomes.",
     icon: Zap,
+    methodology: [
+      "Étude énergétique et dimensionnement",
+      "Conception du système solaire",
+      "Installation des panneaux et équipements",
+      "Mise en service et tests",
+      "Formation à l'utilisation",
+      "Maintenance et suivi de performance",
+    ],
   },
 ];
 
@@ -125,6 +188,15 @@ export const formations: Formation[] = [
     description:
       "Maîtrisez les outils bureautiques essentiels : Word, Excel, PowerPoint et plus.",
     icon: FileSpreadsheet,
+    prerequisites: ["Aucun prérequis technique", "Connaissances de base en informatique"],
+    skills: [
+      "Maîtrise de Microsoft Office",
+      "Rédaction de documents professionnels",
+      "Création de tableaux et graphiques",
+      "Présentations efficaces",
+    ],
+    duration: "40 heures",
+    price: "Sur devis",
   },
   {
     id: "comptabilite",
@@ -132,6 +204,15 @@ export const formations: Formation[] = [
     description:
       "Formation aux logiciels de comptabilité et aux principes de gestion financière.",
     icon: TrendingUp,
+    prerequisites: ["Notions de base en comptabilité", "Maîtrise de l'outil informatique"],
+    skills: [
+      "Utilisation de logiciels comptables (SAGE, etc.)",
+      "Gestion des écritures comptables",
+      "Établissement des états financiers",
+      "Analyse financière de base",
+    ],
+    duration: "60 heures",
+    price: "Sur devis",
   },
   {
     id: "marketing",
@@ -139,6 +220,15 @@ export const formations: Formation[] = [
     description:
       "Apprenez les stratégies de marketing en ligne : SEO, réseaux sociaux et publicité.",
     icon: Megaphone,
+    prerequisites: ["Maîtrise des réseaux sociaux", "Intérêt pour le marketing"],
+    skills: [
+      "Stratégie de contenu digital",
+      "SEO et référencement naturel",
+      "Publicité en ligne (Google Ads, Facebook Ads)",
+      "Analyse de performance (Analytics)",
+    ],
+    duration: "50 heures",
+    price: "Sur devis",
   },
   {
     id: "maintenance",
@@ -146,6 +236,15 @@ export const formations: Formation[] = [
     description:
       "Diagnostic, réparation et maintenance des équipements informatiques.",
     icon: Wrench,
+    prerequisites: ["Connaissances de base en informatique", "Logique technique"],
+    skills: [
+      "Diagnostic de pannes matérielles",
+      "Installation et configuration de systèmes",
+      "Maintenance préventive",
+      "Résolution de problèmes courants",
+    ],
+    duration: "80 heures",
+    price: "Sur devis",
   },
   {
     id: "programmation",
@@ -153,6 +252,15 @@ export const formations: Formation[] = [
     description:
       "Initiez-vous à la programmation : Python, JavaScript, et développement web.",
     icon: Terminal,
+    prerequisites: ["Logique algorithmique", "Maîtrise de l'anglais technique"],
+    skills: [
+      "Bases de la programmation (Python, JavaScript)",
+      "Développement web (HTML, CSS, React)",
+      "Gestion de bases de données",
+      "Déploiement d'applications",
+    ],
+    duration: "120 heures",
+    price: "Sur devis",
   },
   {
     id: "systemes",
@@ -160,6 +268,15 @@ export const formations: Formation[] = [
     description:
       "Administration système, configuration réseau et sécurité informatique.",
     icon: Server,
+    prerequisites: ["Connaissances en informatique", "Notions de réseaux"],
+    skills: [
+      "Administration de systèmes (Windows, Linux)",
+      "Configuration de réseaux",
+      "Sécurisation des infrastructures",
+      "Virtualisation et cloud",
+    ],
+    duration: "100 heures",
+    price: "Sur devis",
   },
   {
     id: "multimedia",
@@ -167,6 +284,15 @@ export const formations: Formation[] = [
     description:
       "Création graphique, montage vidéo et production de contenu multimédia.",
     icon: Video,
+    prerequisites: ["Sens créatif", "Maîtrise de base de l'outil informatique"],
+    skills: [
+      "Design graphique (Photoshop, Illustrator)",
+      "Montage vidéo (Premiere Pro, After Effects)",
+      "Création de contenu visuel",
+      "Optimisation pour le web",
+    ],
+    duration: "70 heures",
+    price: "Sur devis",
   },
   {
     id: "langues",
@@ -174,6 +300,15 @@ export const formations: Formation[] = [
     description:
       "Cours de langues pour améliorer votre communication professionnelle.",
     icon: Languages,
+    prerequisites: ["Aucun prérequis", "Motivation et assiduité"],
+    skills: [
+      "Communication orale et écrite",
+      "Vocabulaire professionnel",
+      "Compréhension et expression",
+      "Préparation aux certifications",
+    ],
+    duration: "Variable selon le niveau",
+    price: "Sur devis",
   },
 ];
 

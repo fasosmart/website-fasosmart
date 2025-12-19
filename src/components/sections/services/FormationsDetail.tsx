@@ -1,8 +1,9 @@
 "use client";
 
 import { formations } from "@/lib/data";
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, Clock, DollarSign, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { FlipCard } from "@/components/ui/flip-card";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -76,7 +77,7 @@ export function FormationsDetail() {
           </motion.p>
         </motion.div>
 
-        {/* Formations Grid avec animations */}
+        {/* Formations Grid avec animations et Flip Cards */}
         <motion.div
           className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
           variants={containerVariants}
@@ -90,35 +91,77 @@ export function FormationsDetail() {
               <motion.div
                 key={formation.id}
                 variants={cardVariants}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative bg-card text-card-foreground rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/40"
+                className="h-72" // Hauteur fixe pour les flip cards
               >
-                {/* Left border accent */}
-                <motion.div
-                  className="absolute left-0 top-0 bottom-0 w-1 bg-primary rounded-l-2xl"
-                  initial={{ scaleY: 0 }}
-                  whileHover={{ scaleY: 1 }}
-                  transition={{ duration: 0.3 }}
+                <FlipCard
+                  // Face avant (recto)
+                  frontIcon={Icon}
+                  frontTitle={formation.title}
+                  frontDescription={formation.description}
+                  // Face arrière (verso) - Détails de la formation
+                  backTitle="Détails de la formation"
+                  backContent={
+                    <div className="space-y-4 text-sm">
+                      {/* Prérequis */}
+                      {formation.prerequisites &&
+                        formation.prerequisites.length > 0 && (
+                          <div>
+                            <h4 className="font-semibold mb-2 flex items-center gap-2">
+                              <CheckCircle2 className="w-4 h-4" />
+                              Prérequis
+                            </h4>
+                            <ul className="space-y-1 text-white/80">
+                              {formation.prerequisites.map((req, idx) => (
+                                <li key={idx} className="flex items-start gap-2">
+                                  <span className=" mt-0.5">•</span>
+                                  <span>{req}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+
+                      {/* Compétences développées */}
+                      {formation.skills && formation.skills.length > 0 && (
+                        <div>
+                          <h4 className="font-semibold mb-2 flex items-center gap-2">
+                            <CheckCircle2 className="w-4 h-4" />
+                            Compétences développées
+                          </h4>
+                          <ul className="space-y-1 text-white/80">
+                            {formation.skills.map((skill, idx) => (
+                              <li key={idx} className="flex items-start gap-2">
+                                <span className="mt-0.5">•</span>
+                                <span>{skill}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      {/* Durée et Prix */}
+                      <div className="flex flex-col gap-2 pt-2 border-t border-white/20">
+                        {formation.duration && (
+                          <div className="flex items-center gap-2 text-white/90">
+                            <Clock className="w-4 h-4 " />
+                            <span className="text-xs">
+                              Durée : {formation.duration}
+                            </span>
+                          </div>
+                        )}
+                        {formation.price && (
+                          <div className="flex items-center gap-2 text-white/90">
+                            <DollarSign className="w-4 h-4 " />
+                            <span className="text-xs">Prix : {formation.price}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  }
+                  // Styles personnalisés
+                  className="h-full"
+                  frontClassName="hover:border-primary/40"
                 />
-
-                <div className="p-6 relative z-10">
-                  {/* Icon */}
-                  <motion.div
-                    className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center mb-4 group-hover:from-primary group-hover:to-primary-dark transition-all duration-300"
-                    whileHover={{ rotate: 360, scale: 1.1 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <Icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
-                  </motion.div>
-
-                  {/* Content */}
-                  <h3 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                    {formation.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed">
-                    {formation.description}
-                  </p>
-                </div>
               </motion.div>
             );
           })}

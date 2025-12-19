@@ -2,6 +2,7 @@
 
 import { services } from "@/lib/data";
 import { motion } from "framer-motion";
+import { FlipCard } from "@/components/ui/flip-card";
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -75,7 +76,7 @@ export function ServicesDetail() {
           </motion.p>
         </motion.div>
 
-        {/* Services Grid avec animations */}
+        {/* Services Grid avec animations et Flip Cards */}
         <motion.div
           className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
           variants={containerVariants}
@@ -89,44 +90,42 @@ export function ServicesDetail() {
               <motion.div
                 key={service.id}
                 variants={cardVariants}
-                whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative bg-card text-card-foreground rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/40 overflow-hidden"
+                className="h-72" // Hauteur fixe pour les flip cards
               >
-                {/* Effet de brillance */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-
-                {/* Number badge */}
-                <motion.div
-                  className="absolute top-6 right-6 w-8 h-8 rounded-full bg-muted flex items-center justify-center text-sm font-semibold text-muted-foreground group-hover:bg-primary/10 group-hover:text-primary transition-colors z-10"
-                  whileHover={{ rotate: 360, scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </motion.div>
-
-                {/* Icon */}
-                <motion.div
-                  className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary transition-all duration-300 relative z-10"
-                  whileHover={{ rotate: 360, scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <Icon className="w-7 h-7 text-primary group-hover:text-white transition-colors" />
-                </motion.div>
-
-                {/* Content */}
-                <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors relative z-10">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed relative z-10">
-                  {service.description}
-                </p>
-
-                {/* Bottom decoration */}
-                <motion.div
-                  className="absolute inset-x-0 bottom-0 h-1 bg-primary rounded-b-2xl"
-                  initial={{ scaleX: 0 }}
-                  whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.3 }}
+                <FlipCard
+                  // Face avant (recto)
+                  frontIcon={Icon}
+                  frontTitle={service.title}
+                  frontDescription={service.description}
+                  frontBadge={String(index + 1).padStart(2, "0")}
+                  // Face arrière (verso) - Méthodologie/Processus
+                  backTitle="Notre Processus"
+                  backContent={
+                    <div className="space-y-3">
+                      {service.methodology && service.methodology.length > 0 ? (
+                        <ul className="space-y-2">
+                          {service.methodology.map((step, idx) => (
+                            <li
+                              key={idx}
+                              className="flex items-start gap-2 text-sm text-white/90"
+                            >
+                              <span className="font-bold mt-0.5">
+                                {idx + 1}.
+                              </span>
+                              <span>{step}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="text-white/80 text-sm">
+                          Processus personnalisé selon vos besoins.
+                        </p>
+                      )}
+                    </div>
+                  }
+                  // Styles personnalisés
+                  className="h-full"
+                  frontClassName="hover:border-primary/40"
                 />
               </motion.div>
             );
