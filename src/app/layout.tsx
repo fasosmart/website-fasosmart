@@ -57,6 +57,12 @@ export const metadata: Metadata = {
     description:
       "Une entreprise panafricaine leader au service de la révolution technologique africaine",
   },
+  // Icônes pour le favicon et les appareils
+  icons: {
+    icon: "/icon.svg",
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
 };
 
 // Composant racine du layout de l'application
