@@ -146,7 +146,7 @@ export function References() {
               <div className="hidden group-hover:block absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-48 p-3 bg-gray-900 text-white text-xs rounded-lg shadow-xl z-10">
                 <p className="font-medium mb-1">Services fournis :</p>
                 <ul className="space-y-0.5">
-                  {reference.services.slice(0, 3).map((service, idx) => (
+                  {reference.services.slice(0, 7).map((service, idx) => (
                     <li key={idx} className="text-gray-300">
                       • {service}
                     </li>

@@ -54,7 +54,7 @@ export function Projects() {
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.4 }}
           >
-            Nos Projets
+            Nos Réalisations
           </motion.span>
           <motion.h2
             className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-foreground mb-6"
@@ -63,7 +63,7 @@ export function Projects() {
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Des projets qui font la différence
+            Des réalisations qui font la différence
           </motion.h2>
           <motion.p
             className="text-lg text-muted-foreground"
@@ -72,7 +72,7 @@ export function Projects() {
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Découvrez nos réalisations et projets en cours qui transforment les
+            Découvrez nos réalisations qui transforment les
             entreprises et institutions en Guinée et en Afrique.
           </motion.p>
         </motion.div>
@@ -174,7 +174,7 @@ export function Projects() {
               <ArrowRight className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
             </motion.div>
             <h3 className="text-xl font-semibold text-foreground mb-2">
-              Plus de projets
+              Plus de réalisations
             </h3>
             <p className="text-muted-foreground mb-6">
               Découvrez l&apos;ensemble de nos réalisations et références clients.
@@ -185,7 +185,7 @@ export function Projects() {
                 variant="outline"
                 className="border-2 border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all"
               >
-                <Link href="/projets">Voir tous les projets</Link>
+                <Link href="/realisations">Voir toutes les réalisations</Link>
               </Button>
             </motion.div>
           </motion.div>
