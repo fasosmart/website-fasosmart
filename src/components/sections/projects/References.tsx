@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { references } from "@/lib/data";
 import { Building2 } from "lucide-react";
 import { motion } from "framer-motion";
@@ -116,11 +117,21 @@ export function References() {
               whileHover={{ y: -8, scale: 1.05 }}
               className="group relative bg-card text-card-foreground rounded-xl p-4 lg:p-5 shadow-sm hover:shadow-xl transition-all duration-300 border border-border hover:border-primary/40"
             >
-              {/* Logo placeholder */}
-              <div className="w-12 h-12 mx-auto mb-3 rounded-xl bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center group-hover:from-primary group-hover:to-primary-dark transition-all duration-300">
-                <span className="text-lg font-bold text-primary group-hover:text-white transition-colors">
-                  {reference.name.charAt(0)}
-                </span>
+              {/* Logo (ou fallback initiale) */}
+              <div className="w-16 h-16 mx-auto mb-3 rounded-xl bg-gradient-to-br from-primary/10 to-primary/20 flex items-center justify-center overflow-hidden group-hover:from-primary group-hover:to-primary-dark transition-all duration-300">
+                {reference.logo ? (
+                  <Image
+                    src={reference.logo}
+                    alt={reference.name}
+                    width={64}
+                    height={64}
+                    className="max-h-16 w-auto object-contain"
+                  />
+                ) : (
+                  <span className="text-lg font-bold text-primary group-hover:text-white transition-colors">
+                    {reference.name.charAt(0)}
+                  </span>
+                )}
               </div>
 
               {/* Name */}
