@@ -47,6 +47,7 @@ export interface Partner {
   id: string;
   name: string;
   logo?: string;
+  description?: string;
 }
 
 export interface Reference {
@@ -313,139 +314,142 @@ export const formations: Formation[] = [
 ];
 
 // Partenaires (Fournisseurs - Fasosmart achète chez eux)
+// Seulement ceux avec toutes les informations complètes (logo + description)
 export const partners: Partner[] = [
-    {
+  {
     id: "odoo",
-    name: "odoo",
+    name: "Odoo",
     logo: "/images/logos/Logo/Logo partenaire/odoo_logo.png",
+    description: "Plateforme ERP complète et modulaire, Odoo couvre tous les besoins de gestion d'entreprise, du CRM à la comptabilité, en passant par les stocks et les projets, favorisant l'efficacité opérationnelle.",
+  },
+  {
+    id: "opw",
+    name: "OPW",
+    logo: "/images/logos/Logo/Logo partenaire/logo_opw-corp.svg",
+    description: "Partenaire clé dans les solutions de gestion de carburant, OPW fournit des équipements innovants pour la distribution, le suivi et la sécurité des opérations de ravitaillement, optimisant la consommation.",
   },
   {
     id: "teltonika",
-    name: "TELTONIKA",
+    name: "Teltonika",
     logo: "/images/logos/Logo/Logo partenaire/logo-rect-teltonika.png",
+    description: "Spécialiste des dispositifs IoT, Teltonika propose une gamme étendue de traceurs GPS, de routeurs et de passerelles pour des solutions de connectivité avancées et une télématique fiable.",
   },
   {
     id: "wialon",
-    name: "winlon",
+    name: "Wialon",
     logo: "/images/logos/Logo/Logo partenaire/Wialon Logo Blue Safe Area 300.png",
+    description: "Reconnue mondialement, la plateforme télématique Wialon offre des outils puissants pour la gestion de flottes, le suivi en temps réel, l'analyse de données et l'optimisation logistique pour les entreprises.",
   },
-  { id: "proline", name: "proline" },
-  { id: "alshiraa", name: "AL SHIRAA CONTROL DEVICES TR." },
-  { id: "businefy", name: "businefy" },
-  { id: "ecash", name: "e-CASH.com" },
-  { id: "spark", name: "SPARK JT" },
-  { id: "thenkana", name: "Thenkana" },
-  { id: "continental", name: "CONTINENTAL" },
-  { id: "plasticard", name: "plasticard ZFT" },
 ];
 
 // Références (Clients - Ils achètent chez Fasosmart)
+// Seulement celles avec toutes les informations complètes (logo + services détaillés)
 export const references: Reference[] = [
   {
     id: "cciag",
-    name: "CCIAG",
-    services: ["Développement du système informatique", "Intégration des solutions de paiement", "Fournitures de cartes sécurisées", "Équipement des centres communaux et régionaux"],
+    name: "Chambre du Commerce, d'Industrie et d'Artisanat de Guinée (CCIAG)",
+    services: [
+      "Projet BOT de digitalisation de la carte d'adhésion",
+      "Développement du système informatique",
+      "Intégration des solutions de paiement",
+      "Fournitures de cartes sécurisées",
+      "Equipement des centres communaux et régionaux",
+    ],
     logo: "/images/logos/Logo/Logo reférences/CCIAG.jpeg",
   },
   {
     id: "tdss",
-    name: "TDSS",
-    services: ["Développement d'un système de gestion des permis biométriques des non nationaux en Rép. de Guinée", "Communication Digitale (site web et réseaux sociaux)"],
+    name: "Tech Data Securisation & Systèmes (TDSS)",
+    services: [
+      "Projet BOT de digitalisation des permis biométriques des non nationaux en République de Guinée",
+      "Mise en place d'un système de gestion intégrée des permis de travail des étrangers en République de Guinée",
+      "Développement et intégration d'une solution de télépaiement des permis de travail des étrangers",
+      "Déploiement réseaux informatiques (Cloud, Local Backup, VPN)",
+    ],
     logo: "/images/logos/Logo/Logo reférences/TDSS.jpg",
   },
   {
     id: "marine-marchande",
-    name: "MARINE MARCHANDE GUINÉENNE",
-    services: ["Communication digitale (Site Web, Réseaux sociaux, Création graphique)", "Développement application de gestion des titres et certificat", "Administration infrastructure réseau"],
+    name: "Direction Nationale de la Marine Marchande",
+    services: [
+      "Communication digitale (Site Web, Réseaux sociaux, Création graphique)",
+      "Développement application de gestion des titres et certificat",
+      "Administration infrastructure réseau",
+      "Fourniture d'accès à Internet haut débit",
+    ],
     logo: "/images/logos/Logo/Logo reférences/DNMM.png",
   },
   {
-    id: "ges",
-    name: "GES (La Guinéenne d'Energies et de Services)",
-    services: ["Développement d'un système d'information intégrant la gestion des livraisons des produits pétroliers, de la gestion de la ressource humaine, de la comptabilité"],
-    logo: "/images/logos/Logo/Logo reférences/ges_jpg.jpg",
-  },
-  {
     id: "dynamic-mining",
-    name: "DYNAMIC MINING",
-    services: ["Fourniture de matériel informatique", "Système de gestion automatique des présences"],
+    name: "Dynamic Mining",
+    services: [
+      "Fourniture de matériel informatique",
+      "Système de gestion automatique des présences",
+      "Installation de système de backup (Solaire et Hybride)",
+      "Déploiement de système de vidéosurveillance",
+    ],
     logo: "/images/logos/Logo/Logo reférences/Dynamic Mine.png",
   },
   {
+    id: "ges",
+    name: "Guinéenne d'Energies et Services - GES",
+    services: [
+      "Déploiement ERP gestion de fourniture de produits pétroliers",
+      "Fourniture de matériel informatique",
+    ],
+    logo: "/images/logos/Logo/Logo reférences/ges_jpg.jpg",
+  },
+  {
     id: "tacon",
-    name: "TACON",
-    services: ["Fourniture de matériel informatique", "Développement site web", "Implémentation ERP"],
+    name: "TACON - PROJET DE RENOVATION STADE GENERAL LANSANA CONTE NONGO",
+    services: [
+      "Fourniture de matériel informatique",
+      "Déploiement système de contrôle d'accès",
+      "Déploiement de ERP",
+    ],
     logo: "/images/logos/Logo/Logo reférences/TACON.jpg",
   },
   {
-    id: "west-african",
-    name: "WEST AFRICAN LINE NEGOCE",
-    services: ["Gestion du Parc informatique", "Communication Digital"],
-  },
-  {
-    id: "gmt",
-    name: "GUINEO-MAROCAINE DES TRAVAUX (GMT)",
-    services: ["Gestion du Parc Informatique", "Communication Digitale (Site web & réseaux sociaux)", "Fourniture Matériel Informatique", "Déploiement VoiP", "Sécurité Electronique (vidéo de surveillance, contrôle d'accès)", "Déploiement Progiciel SAGE (Comptabilité et RH)"],
-  },
-  {
-    id: "ageroute",
-    name: "AGEROUTE (Agence de Gestion des Routes)",
-    services: ["Fourniture matériel Informatique et de système de visioconférence"],
-  },
-  {
-    id: "makila-share",
-    name: "MAKILA Share",
-    services: ["Système de gestion des donneurs et demandeur de sang en RDC - Kinshasa", "Site web"],
-  },
-  {
-    id: "aguiser",
-    name: "AGUISER (Agence Guinéenne de Sécurité Routière)",
-    services: ["Développement site web et système d'alerte sur les accidents de route"],
-  },
-  {
-    id: "socoser",
-    name: "SOCOSER LOGISTIQUE",
-    services: ["Administration réseau", "Gestion parc informatique", "Déploiement Voip", "Implémentation ERP"],
-  },
-  {
-    id: "afrikhealth",
-    name: "Afrikhealth",
-    services: ["Solution de gestion et suivi des patients en RDC - Kinshasa", "Implémentation ERP pour gestion de la pharmacie en RDC-Kinshasa", "Site web"],
-  },
-  {
-    id: "salsabil",
-    name: "SALSABIL - MAURITANIE",
-    services: ["Personnalisation et déploiement ERP pour la gestion des ventes et achats, de la comptabilité, de l'inventaire ainsi que la Paie & RH"],
+    id: "sonapie",
+    name: "SONAPIE SA",
+    services: [
+      "Fourniture de matériel informatique",
+      "Déploiement infrastructure réseau",
+      "Déploiement système de vidéo-surveillance",
+    ],
+    logo: "/images/logos/Logo/Logo reférences/SONAPI.png",
   },
   {
     id: "dalein",
-    name: "DALEIN TRANSPORT & BTP",
-    services: ["Développement d'un système d'information intégrant la gestion des livraisons des produits pétroliers, de la gestion de la ressource humaine, de la comptabilité du parc automobile avec la gestion des ateliers de maintenance"],
-  },
-  {
-    id: "global-optique",
-    name: "Global OPTIQUE GUINÉE",
-    services: ["Implémentation ERP", "Site web"],
-  },
-  {
-    id: "guinee-gaz",
-    name: "GUINÉE GAZ",
-    services: ["Déploiement SAGE I 100 Cloud", "Comptabilité et commercial", "Formation et Assistance", "Fourniture matériel Informatique", "Installation système de vidéosurveillance et de pointage biometrique"],
+    name: "Dalein Transports & TP",
+    services: [
+      "Déploiement ERP gestion de fourniture de produits pétroliers",
+      "Fourniture de matériel informatique",
+      "Administration infrastructure réseau",
+      "Système de gestion automatique des présences",
+    ],
   },
   {
     id: "metal-guinee",
-    name: "Groupe MG METAL GUINEE",
-    services: ["Fourniture d'équipements", "Intégration de Systèmes de Géolocalisation et de gestion de flotte"],
-  },
-  {
-    id: "tanogui",
-    name: "TANOGUI GROUP",
-    services: ["Fourniture d'équipements", "Intégration de Systèmes de Géolocalisation et de gestion de flotte"],
+    name: "Groupe Metal Guinée",
+    services: [
+      "Fourniture de balises GPS et système de Gestion de flotte",
+      "Infographie",
+    ],
   },
   {
     id: "uagcp",
     name: "UAGCP",
-    services: ["Fourniture d'équipements", "Intégration de Systèmes de Géolocalisation et de gestion de flotte"],
+    services: [
+      "Fourniture de balises GPS et système de Gestion de flotte",
+    ],
+  },
+  {
+    id: "ageroute",
+    name: "AGEROUTE (Agence de Gestion des Routes)",
+    services: [
+      "Fourniture de système de vidéoconférence",
+    ],
   },
 ];
 

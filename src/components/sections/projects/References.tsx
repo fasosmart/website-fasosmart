@@ -97,7 +97,10 @@ export function References() {
             viewport={{ once: true }}
             transition={{ delay: 0.4, duration: 0.6 }}
           >
-            Plus de {references.length} entreprises et institutions nous ont
+            La confiance de nos clients prestigieux témoigne de notre excellence et notre engagement envers la qualité. Découvrez quelques-unes de nos
+            réalisations majeures. 
+            <br />
+            {references.length} entreprises et institutions nous ont
             choisis pour leurs projets de transformation digitale.
           </motion.p>
         </motion.div>
