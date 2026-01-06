@@ -11,6 +11,7 @@ import {
   Megaphone,
   Radio,
   Zap,
+  ShoppingCart,
   type LucideIcon,
 } from "lucide-react";
 
@@ -22,5 +23,6 @@ export const serviceIconMap: Record<string, LucideIcon> = {
   communication: Megaphone,
   telematique: Radio,
   energie: Zap,
+  "vente-materiel": ShoppingCart,
 };
 
