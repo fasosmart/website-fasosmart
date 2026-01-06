@@ -20,8 +20,8 @@ export default function ProjectsPage() {
       <PageBanner
         icon="FolderKanban"
         subtitle="Notre portfolio"
-        title="Nos Projets & Réalisations"
-        description="Découvrez nos projets phares et les entreprises qui nous font confiance pour leur transformation digitale."
+        title="Nos réalisations"
+        description="Découvrez nos réalisations phares et les entreprises qui nous font confiance pour leur transformation digitale."
       />
 
       {/* Transition */}
