@@ -340,6 +340,12 @@ export const partners: Partner[] = [
     logo: "/images/logos/Logo/Logo partenaire/Wialon Logo Blue Safe Area 300.png",
     description: "Reconnue mondialement, la plateforme télématique Wialon offre des outils puissants pour la gestion de flottes, le suivi en temps réel, l'analyse de données et l'optimisation logistique pour les entreprises.",
   },
+  {
+    id: "howen", 
+    name: "Howen",
+    logo: "/images/logos/Logo/Logo partenaire/howen_logo.png",
+    description: "Fournisseur de premier plan de solutions de vidéosurveillance mobile et de systèmes de sécurité embarqués, garantissant une surveillance fiable et une gestion vidéo intelligente pour divers secteurs",
+  },
 ];
 
 // Références (Clients - Ils achètent chez Fasosmart)
