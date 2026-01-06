@@ -3,19 +3,26 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, Mail } from "lucide-react";
+import { Menu, X, Phone, Mail, ChevronRight } from "lucide-react";
 import { Logo } from "@/components/shared/Logo";
 import { navigation, companyInfo } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
+import { ServicesDropdown } from "./ServicesDropdown";
+import { services } from "@/lib/data";
+import { serviceIconMap } from "@/lib/service-icons";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
   const pathname = usePathname();
 
   // Vérifier si un lien est actif
   const isActive = (href: string) => pathname === href;
+  
+  // Vérifier si on est sur une page de services
+  const isServicesActive = pathname === "/services" || pathname.startsWith("/services/");
 
   // Fermer le menu quand on change de page
   useEffect(() => {
@@ -64,24 +71,32 @@ export function Header() {
             <div className="flex items-center gap-4">
               {/* Navigation desktop */}
               <nav className="hidden lg:flex items-center gap-8">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className={cn(
-                      "relative py-2 text-sm font-medium transition-colors duration-200",
-                      isActive(item.href)
-                        ? "text-primary"
-                        : "text-muted-foreground hover:text-primary"
-                    )}
-                  >
-                    {item.name}
-                    {/* Tiret sous le lien actif */}
-                    {isActive(item.href) && (
-                      <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
-                    )}
-                  </Link>
-                ))}
+                {navigation.map((item) => {
+                  // Remplacer le lien Services par le dropdown
+                  if (item.name === "Services") {
+                    return (
+                      <ServicesDropdown key={item.name} isActive={isServicesActive} />
+                    );
+                  }
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={cn(
+                        "relative py-2 text-sm font-medium transition-colors duration-200",
+                        isActive(item.href)
+                          ? "text-primary"
+                          : "text-muted-foreground hover:text-primary"
+                      )}
+                    >
+                      {item.name}
+                      {/* Tiret sous le lien actif */}
+                      {isActive(item.href) && (
+                        <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                      )}
+                    </Link>
+                  );
+                })}
               </nav>
 
               {/* Toggle thème */}
@@ -128,21 +143,85 @@ export function Header() {
         <div className="max-w-7xl mx-auto px-4 py-6">
           {/* Navigation mobile */}
           <nav className="space-y-1">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => setIsOpen(false)}
-                className={cn(
-                  "block px-4 py-3 rounded-xl text-base font-medium transition-all",
-                  isActive(item.href)
-                    ? "text-primary bg-primary/10 border-l-4 border-primary"
-                    : "text-foreground hover:text-primary hover:bg-secondary"
-                )}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navigation.map((item) => {
+              // Gérer le menu Services avec sous-menu
+              if (item.name === "Services") {
+                return (
+                  <div key={item.name}>
+                    <button
+                      onClick={() => setIsServicesOpen(!isServicesOpen)}
+                      className={cn(
+                        "w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all",
+                        isServicesActive
+                          ? "text-primary bg-primary/10 border-l-4 border-primary"
+                          : "text-foreground hover:text-primary hover:bg-secondary"
+                      )}
+                    >
+                      <span>{item.name}</span>
+                      <ChevronRight
+                        className={cn(
+                          "w-4 h-4 transition-transform duration-200",
+                          isServicesOpen && "rotate-90"
+                        )}
+                      />
+                    </button>
+                    {/* Sous-menu Services */}
+                    {isServicesOpen && (
+                      <div className="ml-4 mt-1 space-y-1 border-l-2 border-primary/20 pl-2">
+                        {services.map((service) => {
+                          const Icon = serviceIconMap[service.id] || serviceIconMap["dev-apps"];
+                          return (
+                            <Link
+                              key={service.id}
+                              href={`/services/${service.id}`}
+                              onClick={() => {
+                                setIsOpen(false);
+                                setIsServicesOpen(false);
+                              }}
+                              className={cn(
+                                "flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all",
+                                pathname === `/services/${service.id}`
+                                  ? "text-primary bg-primary/10"
+                                  : "text-muted-foreground hover:text-primary hover:bg-secondary"
+                              )}
+                            >
+                              <Icon className="w-4 h-4 flex-shrink-0" />
+                              <span className="line-clamp-1">{service.title}</span>
+                            </Link>
+                          );
+                        })}
+                        <Link
+                          href="/services"
+                          onClick={() => {
+                            setIsOpen(false);
+                            setIsServicesOpen(false);
+                          }}
+                          className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-primary hover:bg-primary/10 transition-all"
+                        >
+                          <ChevronRight className="w-4 h-4" />
+                          Voir tous les services
+                        </Link>
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsOpen(false)}
+                  className={cn(
+                    "block px-4 py-3 rounded-xl text-base font-medium transition-all",
+                    isActive(item.href)
+                      ? "text-primary bg-primary/10 border-l-4 border-primary"
+                      : "text-foreground hover:text-primary hover:bg-secondary"
+                  )}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Séparateur */}
