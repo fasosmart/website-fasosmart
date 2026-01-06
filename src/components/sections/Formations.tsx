@@ -92,7 +92,7 @@ export function Formations() {
             >
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                 <Button asChild size="lg" className="font-semibold">
-                  <Link href="/services-formations#formations" className="flex items-center">
+                  <Link href="/formations" className="flex items-center">
                     Découvrir nos formations
                     <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                   </Link>

@@ -160,7 +160,7 @@ export function Services() {
               className="font-semibold border-2 border-border hover:border-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
             >
               <Link
-                href="/services-formations#services"
+                href="/services"
                 className="flex items-center justify-center group"
               >
                 <span className="transition-colors group-hover:text-primary">

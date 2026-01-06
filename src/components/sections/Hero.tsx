@@ -204,7 +204,7 @@ export function Hero() {
                 size="lg"
                 className="bg-white text-primary hover:bg-white/90 font-semibold shadow-lg hover:shadow-2xl transition-all group"
               >
-                <Link href="/services-formations" className="flex items-center">
+                <Link href="/services" className="flex items-center">
                   Découvrir nos services
                   <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
