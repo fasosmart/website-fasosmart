@@ -85,65 +85,68 @@ export function ServiceDetail({ service }: ServiceDetailProps) {
           </div>
 
           {/* Sidebar - CTA et Contact */}
-          <div className="lg:col-span-1 space-y-6">
-            {/* CTA Card */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6 }}
-              className="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-8 text-white shadow-lg sticky top-24"
-            >
-              <h3 className="text-xl font-display font-bold mb-4">
-                Intéressé par ce service ?
-              </h3>
-              <p className="text-white/90 mb-6 text-sm leading-relaxed">
-                Contactez-nous pour discuter de vos besoins et obtenir un devis
-                personnalisé.
-              </p>
-              <div className="space-y-3">
-                <Button
-                  asChild
-                  size="lg"
-                  className="w-full bg-white text-primary hover:bg-white/90"
-                >
-                  <Link href="/contact" className="flex items-center justify-center gap-2">
-                    <Phone className="w-4 h-4" />
-                    Nous contacter
-                  </Link>
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="w-full"
-                >
-                  <a
-                    href={`mailto:${companyInfo.contact.email}?subject=Demande de renseignement - ${service.title}`}
-                    className="flex items-center justify-center gap-2"
-                  >
-                    <Mail className="w-4 h-4" />
-                    Envoyer un email
-                  </a>
-                </Button>
-              </div>
-            </motion.div>
-
-            {/* Retour aux services */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <Link
-                href="/services"
-                className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm font-medium"
+          <div className="lg:col-span-1">
+            <div className="lg:sticky lg:top-24 space-y-6">
+              {/* CTA Card */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6 }}
+                className="bg-gradient-to-br from-primary to-primary-dark rounded-2xl p-6 lg:p-8 text-white shadow-lg"
               >
-                <ArrowRight className="w-4 h-4 rotate-180" />
-                Retour aux services
-              </Link>
-            </motion.div>
+                <h3 className="text-xl font-display font-bold mb-3 lg:mb-4">
+                  Intéressé par ce service ?
+                </h3>
+                <p className="text-white/90 mb-6 text-sm leading-relaxed">
+                  Contactez-nous pour discuter de vos besoins et obtenir un devis
+                  personnalisé.
+                </p>
+                <div className="space-y-3">
+                  <Button
+                    asChild
+                    size="lg"
+                    className="w-full bg-white text-primary hover:bg-white/90 shadow-md hover:shadow-lg transition-all"
+                  >
+                    <Link href="/contact" className="flex items-center justify-center gap-2">
+                      <Phone className="w-4 h-4" />
+                      Nous contacter
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="w-full border-2 bg-primary text-white hover:bg-primary/90 transition-all"
+                  >
+                    <a
+                      href={`mailto:${companyInfo.contact.email}?subject=Demande de renseignement - ${service.title}`}
+                      className="flex items-center justify-center gap-2"
+                    >
+                      <Mail className="w-4 h-4" />
+                      Envoyer un email
+                    </a>
+                  </Button>
+                </div>
+              </motion.div>
+
+              {/* Retour aux services */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-100px" }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="pt-4 lg:pt-0"
+              >
+                <Link
+                  href="/services"
+                  className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm font-medium group"
+                >
+                  <ArrowRight className="w-4 h-4 rotate-180 group-hover:-translate-x-1 transition-transform" />
+                  Retour aux services
+                </Link>
+              </motion.div>
+            </div>
           </div>
         </div>
       </div>
