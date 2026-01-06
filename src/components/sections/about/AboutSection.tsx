@@ -89,28 +89,20 @@ export function AboutSection() {
               Une entreprise panafricaine au service de l&apos;innovation
             </motion.h2>
             <motion.div
-              className="space-y-4 text-muted-foreground leading-relaxed"
+              className="space-y-4 text-muted-foreground text-justify leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
               <p>
-                Chez <strong className="text-foreground">Fasosmart</strong>, nous
-                travaillons en étroite collaboration avec vous pour personnaliser
-                nos services en fonction de vos exigences spécifiques.
+                Nous sommes des <strong>experts</strong> en technologie de l&apos;information et de l&apos;électronique, à la pointe des innovations. Nous développons des technologies révolutionnaires pour améliorer la vie des particuliers et des entreprises à travers toute l&apos;Afrique.
               </p>
               <p>
-                Quels que soient vos besoins, notre équipe dévouée est là pour
-                vous guider à chaque étape du processus. Nous nous efforçons de
-                dépasser vos attentes en fournissant des solutions efficaces et
-                innovantes qui vous permettront d&apos;atteindre vos objectifs avec
-                succès.
+                Notre entreprise propose des services d&apos;<strong>expertise technologique</strong>, d&apos;<strong>intégration informatique</strong>, de <strong>sécurité électronique</strong> et numérique, de <strong>communication digitale</strong>, d&apos;énergies renouvelables, ainsi que de la <strong>formation</strong> et <strong>d&apos;accompagnement clients</strong>.
               </p>
               <p>
-                Notre engagement envers l&apos;excellence et notre passion pour la
-                technologie nous permettent de proposer des solutions de pointe
-                adaptées aux défis du marché africain.
+                Avec notre expertise variée et nos équipements avancés, nos équipes d&apos;ingénieurs et de techniciens hautement qualifiés résolvent efficacement une grande variété de problèmes pour nos clients, garantissant des résultats mesurables et une croissance durable.
               </p>
             </motion.div>
           </motion.div>

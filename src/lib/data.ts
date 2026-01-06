@@ -531,24 +531,19 @@ export const stats: Stat[] = [
 // Valeurs de l'entreprise
 export const values = [
   {
+    title: "Panafricanisme",
+    description:
+      "Notre objectif est de mettre nos solutions au service de toute l'Afrique et des Africains. Nous développons des technologies qui respectent les spécificités culturelles et économiques du continent tout en favorisant l'intégration régionale.",
+  },
+  {
     title: "Innovation",
     description:
-      "Nous adoptons les dernières technologies pour offrir des solutions avant-gardistes.",
+      "L'innovation est au cœur de nos activités. Avec audace, nous repoussons sans cesse les limites de la technologie pour créer des solutions disruptives qui répondent aux défis contemporains et anticipent les besoins futurs.",
   },
   {
-    title: "Excellence",
+    title: "Passion",
     description:
-      "Nous visons l'excellence dans chaque projet et chaque interaction client.",
-  },
-  {
-    title: "Collaboration",
-    description:
-      "Nous travaillons en étroite collaboration avec nos clients pour atteindre leurs objectifs.",
-  },
-  {
-    title: "Intégrité",
-    description:
-      "Nous agissons avec honnêteté et transparence dans toutes nos activités.",
+      "C'est avec envie et passion que nous traçons l'avenir à travers nos solutions. Notre capital humain ne cesse d'évoluer afin de s'adapter aux dernières innovations technologiques et maintenir notre excellence opérationnelle.",
   },
 ];
 

@@ -1,10 +1,20 @@
 "use client";
 
-import { Lightbulb, Star, Users, Shield } from "lucide-react";
+import { Globe2, Star, Heart } from "lucide-react";
 import { motion } from "framer-motion";
 import { values } from "@/lib/data";
 
-const valueIcons = [Lightbulb, Star, Users, Shield];
+/**
+ * Mapping des icônes pour chaque valeur
+ * Panafricanisme → Globe2 (représente l'Afrique et l'intégration régionale)
+ * Innovation → Star (représente l'excellence et la créativité)
+ * Passion → Heart (représente l'envie et l'engagement)
+ */
+const valueIconMap: Record<string, typeof Globe2> = {
+  Panafricanisme: Globe2,
+  Innovation: Star,
+  Passion: Heart,
+};
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -76,47 +86,53 @@ export function Values() {
 
         {/* Values Grid avec animations */}
         <motion.div
-          className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
+          className="grid sm:grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-5xl mx-auto"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
         >
           {values.map((value, index) => {
-            const Icon = valueIcons[index % valueIcons.length];
+            const Icon = valueIconMap[value.title] || Globe2;
             return (
               <motion.div
-                key={index}
+                key={value.title}
                 variants={cardVariants}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="group relative bg-card text-card-foreground rounded-2xl p-6 lg:p-8 shadow-sm hover:shadow-2xl transition-all duration-300 border border-border hover:border-primary/40 text-center overflow-hidden"
+                className="group relative bg-card text-card-foreground rounded-2xl p-8 lg:p-10 shadow-sm hover:shadow-xl transition-all duration-300 border border-border hover:border-primary/40 text-center overflow-hidden"
               >
-                {/* Effet de brillance */}
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                {/* Effet de brillance au survol */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
 
-                {/* Icon */}
+                {/* Icon avec animation améliorée */}
                 <motion.div
-                  className="w-16 h-16 mx-auto rounded-2xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary transition-all duration-300 relative z-10"
-                  whileHover={{ rotate: 360, scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
+                  className="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center mb-6 group-hover:from-primary group-hover:to-primary-dark transition-all duration-300 relative z-10"
+                  whileHover={{ 
+                    rotate: [0, -10, 10, -10, 0],
+                    scale: 1.1 
+                  }}
+                  transition={{ 
+                    duration: 0.6,
+                    ease: "easeInOut"
+                  }}
                 >
-                  <Icon className="w-8 h-8 text-primary group-hover:text-white transition-colors" />
+                  <Icon className="w-10 h-10 text-primary group-hover:text-white transition-colors duration-300" />
                 </motion.div>
 
                 {/* Content */}
-                <h3 className="text-xl font-semibold text-foreground mb-3 group-hover:text-primary transition-colors relative z-10">
+                <h3 className="text-2xl font-display font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300 relative z-10">
                   {value.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed relative z-10">
+                <p className="text-muted-foreground leading-relaxed text-base relative z-10">
                   {value.description}
                 </p>
 
-                {/* Hover decoration */}
+                {/* Hover decoration - barre en bas */}
                 <motion.div
-                  className="absolute inset-x-0 bottom-0 h-1 bg-primary rounded-b-2xl"
+                  className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-primary via-primary-dark to-primary rounded-b-2xl"
                   initial={{ scaleX: 0 }}
                   whileHover={{ scaleX: 1 }}
-                  transition={{ duration: 0.3 }}
+                  transition={{ duration: 0.3, ease: "easeOut" }}
                 />
               </motion.div>
             );

@@ -9,9 +9,9 @@ export const companyInfo = {
   description:
     "DES SOLUTIONS TECHNOLOGIQUES POUR STIMULER VOTRE PRODUCTIVITÉ",
   mission:
-    "Développer et démocratiser l'utilisation des solutions technologiques dans la vie des gens et des sociétés afin de stimuler leur productivité",
+    "Développer et démocratiser l'utilisation des solutions technologiques dans la vie des gens et des sociétés afin de stimuler leur productivité. Nous nous engageons à rendre la technologie accessible à tous, en créant des pont entre innovation et besoins réels du terrain.",
   vision:
-    "Une entreprise panafricaine leader au service de la révolution technologique africaine",
+    "Devenir une entreprise panafricaine leader au service de la révolution technologique africaine. Nous aspirons à transformer le paysage numérique du continent en proposant des solutions innovantes, adaptées aux réalités locales et aux ambitions internationales de nos clients.",
   contact: {
     phone: "+224 613 15 45 45",
     email: "info@fasosmart.com",
