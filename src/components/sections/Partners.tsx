@@ -14,9 +14,6 @@ export function Partners() {
           <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
             Nos Partenaires Technologiques
           </span>
-          <h2 className="text-2xl sm:text-3xl font-display font-bold text-foreground mb-4">
-            Ils nous font confiance
-          </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
             Nous collaborons avec des leaders technologiques mondiaux pour vous offrir des solutions innovantes, fiables et performantes, adaptées à vos
             défis spécifiques. Ces partenariats stratégiques garantissent l'excellence et la pérennité de nos services.
