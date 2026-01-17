@@ -163,10 +163,10 @@ export function Services() {
                 href="/services"
                 className="flex items-center justify-center group"
               >
-                <span className="transition-colors group-hover:text-primary">
+                <span className="transition-colors">
                   Voir tous nos services
                 </span>
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform text-primary" />
+                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
           </motion.div>
