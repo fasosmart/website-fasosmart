@@ -76,7 +76,7 @@ function AnimatedStat({ value, label, index }: { value: string; label: string; i
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden gradient-animated text-white min-h-[90vh] flex items-center">
+    <section className="relative w-full overflow-hidden gradient-animated text-white min-h-[90vh] flex items-center">
       {/* Background Pattern - Particules animées */}
       <div className="absolute inset-0 opacity-20">
         <motion.div

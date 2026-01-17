@@ -13,7 +13,7 @@ export default function FrontOfficeLayout({
   return (
     <>
       <Header />
-      <main className="min-h-screen container mx-auto">{children}</main>
+      <main className="min-h-screen">{children}</main>
       <Footer />
       <ScrollToTop />
     </>

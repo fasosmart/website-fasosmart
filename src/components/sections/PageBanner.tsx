@@ -58,7 +58,7 @@ export function PageBanner({
   const Icon = icon ? iconMap[icon] : undefined;
 
   return (
-    <section className="relative overflow-hidden gradient-animated text-white min-h-[50vh] flex items-center">
+    <section className="relative w-full overflow-hidden gradient-animated text-white min-h-[60vh] md:min-h-[70vh] flex items-center">
       {/* Background Pattern animé */}
       <div className="absolute inset-0 opacity-20">
         <motion.div
