@@ -8,7 +8,7 @@ export function Partners() {
 
   return (
     <section className="py-16 md:py-20 bg-background overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         {/* Header */}
         <div className="text-center mb-12">
           <span className="inline-block text-primary font-semibold text-sm uppercase tracking-wider mb-4">
@@ -64,7 +64,7 @@ export function Partners() {
       </div>
 
       {/* Static Grid for smaller screens (fallback) */}
-      <div className="md:hidden mt-8 max-w-7xl mx-auto px-4">
+      <div className="md:hidden mt-8 max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-2 gap-4">
           {partners.slice(0, 6).map((partner) => (
             <div

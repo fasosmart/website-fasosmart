@@ -63,7 +63,7 @@ export function Header() {
             : "shadow-none"
         )}
       >
-        <div className="container mx-auto ">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
             <Logo variant="header" showText={false} showSlogan={false} />
@@ -140,7 +140,7 @@ export function Header() {
           isOpen ? "translate-x-0" : "translate-x-full"
         )}
       >
-        <div className="max-w-7xl mx-auto px-4 py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-6">
           {/* Navigation mobile */}
           <nav className="space-y-1">
             {navigation.map((item) => {

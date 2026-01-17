@@ -41,7 +41,7 @@ export function Services() {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary-turquoise/10 rounded-full blur-3xl dark:bg-primary-turquoise/20" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
         {/* Header avec animation */}
         <motion.div
           className="text-center max-w-3xl mx-auto mb-16"

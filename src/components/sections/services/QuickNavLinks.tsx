@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 
 export function QuickNavLinks() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
       <motion.div
         className="flex flex-wrap gap-4 justify-center"
         initial={{ opacity: 0, y: 20 }}
