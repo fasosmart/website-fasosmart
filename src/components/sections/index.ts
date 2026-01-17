@@ -3,6 +3,7 @@
  */
 
 export { Hero } from "./Hero";
+export { Divisions } from "./Divisions";
 export { AboutPreview } from "./AboutPreview";
 export { Services } from "./Services";
 export { Formations } from "./Formations";

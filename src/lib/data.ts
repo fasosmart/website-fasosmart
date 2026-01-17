@@ -19,6 +19,9 @@ import {
   Video,
   Languages,
   ShoppingCart,
+  Navigation,
+  Cloud,
+  Store,
   LucideIcon,
 } from "lucide-react";
 
@@ -71,6 +74,17 @@ export interface Project {
 export interface Stat {
   value: string;
   label: string;
+}
+
+export interface Division {
+  id: string;
+  name: string;
+  tagline: string;
+  description: string;
+  icon: LucideIcon;
+  features: string[];
+  url?: string; // URL externe si site séparé, sinon page interne
+  color?: string; // Couleur d'accent optionnelle
 }
 
 // Services
@@ -574,5 +588,69 @@ export const objectives = [
   "Accompagner les entreprises dans leur transformation digitale",
   "Former les talents de demain aux métiers du numérique",
   "Contribuer au développement économique de la région",
+];
+
+// Filiales / Divisions
+export const divisions: Division[] = [
+  {
+    id: "fasotrax",
+    name: "FASOTRAX",
+    tagline: "Télématique & IoT",
+    description: "Solutions de tracking GPS, gestion de flotte et Internet des Objets pour optimiser vos opérations.",
+    icon: Navigation,
+    features: [
+      "Gestion de flotte",
+      "Tracking GPS",
+      "Solutions IoT",
+      "Vidéo surveillance",
+    ],
+    url: "https://fasotrax.com", // À adapter selon le site réel
+    color: "#0E76BC",
+  },
+  {
+    id: "fasohosting",
+    name: "FASOHOSTING",
+    tagline: "Hébergement Web",
+    description: "Hébergement web fiable et sécurisé, noms de domaine et services cloud pour votre présence en ligne.",
+    icon: Cloud,
+    features: [
+      "Hébergement Web",
+      "Noms de domaine",
+      "Serveurs VPS",
+      "Email professionnel",
+    ],
+    url: "https://fasohosting.com",
+    color: "#1087A4",
+  },
+  {
+    id: "fasosmak",
+    name: "FASOSMAK",
+    tagline: "Boutique en Ligne",
+    description: "Marketplace d'équipements technologiques, accessoires et solutions B2B pour tous vos besoins IT.",
+    icon: Store,
+    features: [
+      "Marketplace",
+      "Équipements Tech",
+      "Accessoires",
+      "Solutions B2B",
+    ],
+    url: "https://fasosmak.com", // À adapter selon le site réel
+    color: "#E63946",
+  },
+  {
+    id: "fasosmart",
+    name: "FASOSMART",
+    tagline: "Solutions Tech",
+    description: "Développement d'applications, maintenance IT, réseaux & sécurité et formations professionnelles.",
+    icon: Code,
+    features: [
+      "Développement Apps",
+      "Gestion de parc informatique",
+      "Réseaux informatique",
+      "Sécurité électronique",
+    ],
+    url: "/services",
+    color: "#4491CE",
+  },
 ];
 

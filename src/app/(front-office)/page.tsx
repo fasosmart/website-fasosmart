@@ -1,5 +1,6 @@
 import {
   Hero,
+  Divisions,
   AboutPreview,
   Services,
   Formations,
@@ -18,8 +19,15 @@ export default function HomePage() {
       {/* Transition fluide */}
       <SectionTransition variant="wave" className="text-white" />
 
+
       {/* À Propos Preview */}
       <AboutPreview />
+
+      {/* Transition fluide */}
+      <SectionTransition variant="gradient" className="text-gray-50" />
+      
+      {/* Nos Filiales - Section Prioritaire */}
+      <Divisions />
 
       {/* Transition fluide */}
       <SectionTransition variant="gradient" className="text-gray-50" />
