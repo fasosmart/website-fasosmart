@@ -24,7 +24,7 @@ export const navigation = [
   { name: "Accueil", href: "/" },
   { name: "À Propos", href: "/a-propos" },
   { name: "Nos Filiales", href: "/divisions" },
-  { name: "Services", href: "/services" },
+  // { name: "Services", href: "/services" },
   { name: "Formations", href: "/formations" },
   { name: "Nos réalisations", href: "/realisations" },
   { name: "Contact", href: "/contact" },
