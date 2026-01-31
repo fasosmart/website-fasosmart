@@ -28,19 +28,19 @@ export function DivisionsDropdown({ isActive }: DivisionsDropdownProps) {
     >
       {/* Lien "Nos Filiales" avec chevron */}
       <Link
-        href="/divisions"
+        href="#"
         className={cn(
           "relative py-2 text-sm font-medium transition-colors duration-200 flex items-center gap-1",
           isActive
             ? "text-primary"
-            : "text-muted-foreground hover:text-primary"
+            : "text-muted-foreground hover:text-primary",
         )}
       >
         Nos Filiales
         <ChevronDown
           className={cn(
             "w-4 h-4 transition-transform duration-200",
-            isOpen && "rotate-180"
+            isOpen && "rotate-180",
           )}
         />
         {/* Tiret sous le lien actif */}
@@ -78,7 +78,13 @@ export function DivisionsDropdown({ isActive }: DivisionsDropdownProps) {
                 const isEvenIndex = index % 2 === 1;
 
                 // Composant de lien (interne ou externe)
-                const LinkComponent = ({ children, className }: { children: React.ReactNode; className?: string }) => {
+                const LinkComponent = ({
+                  children,
+                  className,
+                }: {
+                  children: React.ReactNode;
+                  className?: string;
+                }) => {
                   if (isExternal && division.url) {
                     return (
                       <a
@@ -104,7 +110,7 @@ export function DivisionsDropdown({ isActive }: DivisionsDropdownProps) {
                     className={cn(
                       "p-6 hover:bg-primary/5 transition-colors duration-200 group border-r border-b border-border",
                       isEvenIndex && "border-r-0",
-                      isLastRow && "border-b-0"
+                      isLastRow && "border-b-0",
                     )}
                   >
                     <div className="flex flex-col gap-3">
@@ -177,4 +183,3 @@ export function DivisionsDropdown({ isActive }: DivisionsDropdownProps) {
     </div>
   );
 }
-

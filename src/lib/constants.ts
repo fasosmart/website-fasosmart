@@ -6,8 +6,7 @@ export const companyInfo = {
   name: "FASOSMART",
   slogan: "THINK SMART - THINK REVOLUTION",
   tagline: "L'INNOVATION AU COEUR DE NOS ACTIVITÉS !",
-  description:
-    "DES SOLUTIONS TECHNOLOGIQUES POUR STIMULER VOTRE PRODUCTIVITÉ",
+  description: "DES SOLUTIONS TECHNOLOGIQUES POUR STIMULER VOTRE PRODUCTIVITÉ",
   mission:
     "Développer et démocratiser l'utilisation des solutions technologiques dans la vie des gens et des sociétés afin de stimuler leur productivité. Nous nous engageons à rendre la technologie accessible à tous, en créant des pont entre innovation et besoins réels du terrain.",
   vision:
@@ -23,7 +22,7 @@ export const companyInfo = {
 export const navigation = [
   { name: "Accueil", href: "/" },
   { name: "À Propos", href: "/a-propos" },
-  { name: "Nos Filiales", href: "/divisions" },
+  { name: "Nos Filiales", href: "#" },
   // { name: "Services", href: "/services" },
   { name: "Formations", href: "/formations" },
   { name: "Nos réalisations", href: "/realisations" },
