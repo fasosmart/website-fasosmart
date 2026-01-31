@@ -23,12 +23,14 @@ export function Header() {
 
   // Vérifier si un lien est actif
   const isActive = (href: string) => pathname === href;
-  
+
   // Vérifier si on est sur une page de services
-  const isServicesActive = pathname === "/services" || pathname.startsWith("/services/");
-  
+  const isServicesActive =
+    pathname === "/services" || pathname.startsWith("/services/");
+
   // Vérifier si on est sur une page de divisions
-  const isDivisionsActive = pathname === "/divisions" || pathname.startsWith("/divisions/");
+  const isDivisionsActive =
+    pathname === "/divisions" || pathname.startsWith("/divisions/");
 
   // Fermer le menu quand on change de page
   useEffect(() => {
@@ -66,7 +68,7 @@ export function Header() {
           "transition-all duration-500",
           isScrolled
             ? "shadow-xl bg-background/95 backdrop-blur-2xl border-border/50"
-            : "shadow-none"
+            : "shadow-none",
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
@@ -81,15 +83,18 @@ export function Header() {
                   // Remplacer le lien "Nos Filiales" par le mega-menu
                   if (item.name === "Nos Filiales") {
                     return (
-                      <DivisionsDropdown key={item.name} isActive={isDivisionsActive} />
+                      <DivisionsDropdown
+                        key={item.name}
+                        isActive={isDivisionsActive}
+                      />
                     );
                   }
                   // Remplacer le lien Services par le dropdown
-                  if (item.name === "Services") {
-                    return (
-                      <ServicesDropdown key={item.name} isActive={isServicesActive} />
-                    );
-                  }
+                  // if (item.name === "Services") {
+                  //   return (
+                  //     <ServicesDropdown key={item.name} isActive={isServicesActive} />
+                  //   );
+                  // }
                   return (
                     <Link
                       key={item.name}
@@ -98,7 +103,7 @@ export function Header() {
                         "relative py-2 text-sm font-medium transition-colors duration-200",
                         isActive(item.href)
                           ? "text-primary"
-                          : "text-muted-foreground hover:text-primary"
+                          : "text-muted-foreground hover:text-primary",
                       )}
                     >
                       {item.name}
@@ -149,7 +154,7 @@ export function Header() {
           "fixed top-16 md:top-20 left-0 right-0 bottom-0 z-40 lg:hidden",
           "bg-background overflow-y-auto",
           "transition-transform duration-300 ease-in-out",
-          isOpen ? "translate-x-0" : "translate-x-full"
+          isOpen ? "translate-x-0" : "translate-x-full",
         )}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-6">
@@ -166,14 +171,14 @@ export function Header() {
                         "w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all",
                         isDivisionsActive
                           ? "text-primary bg-primary/10 border-l-4 border-primary"
-                          : "text-foreground hover:text-primary hover:bg-secondary"
+                          : "text-foreground hover:text-primary hover:bg-secondary",
                       )}
                     >
                       <span>{item.name}</span>
                       <ChevronRight
                         className={cn(
                           "w-4 h-4 transition-transform duration-200",
-                          isDivisionsOpen && "rotate-90"
+                          isDivisionsOpen && "rotate-90",
                         )}
                       />
                     </button>
@@ -188,7 +193,9 @@ export function Header() {
                               key={division.id}
                               href={division.url || "#"}
                               target={isExternal ? "_blank" : undefined}
-                              rel={isExternal ? "noopener noreferrer" : undefined}
+                              rel={
+                                isExternal ? "noopener noreferrer" : undefined
+                              }
                               onClick={() => {
                                 setIsOpen(false);
                                 setIsDivisionsOpen(false);
@@ -197,12 +204,16 @@ export function Header() {
                                 "flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all",
                                 pathname === `/divisions/${division.id}`
                                   ? "text-primary bg-primary/10"
-                                  : "text-muted-foreground hover:text-primary hover:bg-secondary"
+                                  : "text-muted-foreground hover:text-primary hover:bg-secondary",
                               )}
                             >
                               <Icon className="w-4 h-4 flex-shrink-0" />
-                              <span className="line-clamp-1">{division.name}</span>
-                              {isExternal && <ExternalLink className="w-3 h-3 ml-auto" />}
+                              <span className="line-clamp-1">
+                                {division.name}
+                              </span>
+                              {isExternal && (
+                                <ExternalLink className="w-3 h-3 ml-auto" />
+                              )}
                             </a>
                           );
                         })}
@@ -212,67 +223,67 @@ export function Header() {
                 );
               }
               // Gérer le menu Services avec sous-menu
-              if (item.name === "Services") {
-                return (
-                  <div key={item.name}>
-                    <button
-                      onClick={() => setIsServicesOpen(!isServicesOpen)}
-                      className={cn(
-                        "w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all",
-                        isServicesActive
-                          ? "text-primary bg-primary/10 border-l-4 border-primary"
-                          : "text-foreground hover:text-primary hover:bg-secondary"
-                      )}
-                    >
-                      <span>{item.name}</span>
-                      <ChevronRight
-                        className={cn(
-                          "w-4 h-4 transition-transform duration-200",
-                          isServicesOpen && "rotate-90"
-                        )}
-                      />
-                    </button>
-                    {/* Sous-menu Services */}
-                    {isServicesOpen && (
-                      <div className="ml-4 mt-1 space-y-1 border-l-2 border-primary/20 pl-2">
-                        {services.map((service) => {
-                          const Icon = serviceIconMap[service.id] || serviceIconMap["dev-apps"];
-                          return (
-                            <Link
-                              key={service.id}
-                              href={`/services/${service.id}`}
-                              onClick={() => {
-                                setIsOpen(false);
-                                setIsServicesOpen(false);
-                              }}
-                              className={cn(
-                                "flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all",
-                                pathname === `/services/${service.id}`
-                                  ? "text-primary bg-primary/10"
-                                  : "text-muted-foreground hover:text-primary hover:bg-secondary"
-                              )}
-                            >
-                              <Icon className="w-4 h-4 flex-shrink-0" />
-                              <span className="line-clamp-1">{service.title}</span>
-                            </Link>
-                          );
-                        })}
-                        <Link
-                          href="/services"
-                          onClick={() => {
-                            setIsOpen(false);
-                            setIsServicesOpen(false);
-                          }}
-                          className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-primary hover:bg-primary/10 transition-all"
-                        >
-                          <ChevronRight className="w-4 h-4" />
-                          Voir tous les services
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                );
-              }
+              // if (item.name === "Services") {
+              //   return (
+              //     <div key={item.name}>
+              //       <button
+              //         onClick={() => setIsServicesOpen(!isServicesOpen)}
+              //         className={cn(
+              //           "w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all",
+              //           isServicesActive
+              //             ? "text-primary bg-primary/10 border-l-4 border-primary"
+              //             : "text-foreground hover:text-primary hover:bg-secondary"
+              //         )}
+              //       >
+              //         <span>{item.name}</span>
+              //         <ChevronRight
+              //           className={cn(
+              //             "w-4 h-4 transition-transform duration-200",
+              //             isServicesOpen && "rotate-90"
+              //           )}
+              //         />
+              //       </button>
+              //       {/* Sous-menu Services */}
+              //       {isServicesOpen && (
+              //         <div className="ml-4 mt-1 space-y-1 border-l-2 border-primary/20 pl-2">
+              //           {services.map((service) => {
+              //             const Icon = serviceIconMap[service.id] || serviceIconMap["dev-apps"];
+              //             return (
+              //               <Link
+              //                 key={service.id}
+              //                 href={`/services/${service.id}`}
+              //                 onClick={() => {
+              //                   setIsOpen(false);
+              //                   setIsServicesOpen(false);
+              //                 }}
+              //                 className={cn(
+              //                   "flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all",
+              //                   pathname === `/services/${service.id}`
+              //                     ? "text-primary bg-primary/10"
+              //                     : "text-muted-foreground hover:text-primary hover:bg-secondary"
+              //                 )}
+              //               >
+              //                 <Icon className="w-4 h-4 flex-shrink-0" />
+              //                 <span className="line-clamp-1">{service.title}</span>
+              //               </Link>
+              //             );
+              //           })}
+              //           <Link
+              //             href="/services"
+              //             onClick={() => {
+              //               setIsOpen(false);
+              //               setIsServicesOpen(false);
+              //             }}
+              //             className="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-primary hover:bg-primary/10 transition-all"
+              //           >
+              //             <ChevronRight className="w-4 h-4" />
+              //             Voir tous les services
+              //           </Link>
+              //         </div>
+              //       )}
+              //     </div>
+              //   );
+              // }
               return (
                 <Link
                   key={item.name}
@@ -282,7 +293,7 @@ export function Header() {
                     "block px-4 py-3 rounded-xl text-base font-medium transition-all",
                     isActive(item.href)
                       ? "text-primary bg-primary/10 border-l-4 border-primary"
-                      : "text-foreground hover:text-primary hover:bg-secondary"
+                      : "text-foreground hover:text-primary hover:bg-secondary",
                   )}
                 >
                   {item.name}
