@@ -19,13 +19,12 @@ export default function HomePage() {
       {/* Transition fluide */}
       <SectionTransition variant="wave" className="text-white" />
 
-
       {/* À Propos Preview */}
       <AboutPreview />
 
       {/* Transition fluide */}
       <SectionTransition variant="gradient" className="text-gray-50" />
-      
+
       {/* Nos Filiales - Section Prioritaire */}
       <Divisions />
 
@@ -33,7 +32,7 @@ export default function HomePage() {
       <SectionTransition variant="gradient" className="text-gray-50" />
 
       {/* Services */}
-      <Services />
+      {/* <Services /> */}
 
       {/* Transition fluide */}
       <SectionTransition variant="diagonal" className="text-white" />
