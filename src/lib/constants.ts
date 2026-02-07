@@ -13,7 +13,7 @@ export const companyInfo = {
     "Devenir une entreprise panafricaine leader au service de la révolution technologique africaine. Nous aspirons à transformer le paysage numérique du continent en proposant des solutions innovantes, adaptées aux réalités locales et aux ambitions internationales de nos clients.",
   contact: {
     email: "info@fasosmart.com",
-    website: "https://fasosmart.com/",
+    website: "fasosmart.com",
     addresses: [
       {
         id: "conakry",
