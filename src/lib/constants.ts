@@ -12,10 +12,27 @@ export const companyInfo = {
   vision:
     "Devenir une entreprise panafricaine leader au service de la révolution technologique africaine. Nous aspirons à transformer le paysage numérique du continent en proposant des solutions innovantes, adaptées aux réalités locales et aux ambitions internationales de nos clients.",
   contact: {
-    phone: "+224 613 15 45 45",
     email: "info@fasosmart.com",
     website: "www.fasosmart.com",
-    address: "Guinée Conakry Qrt Kobaya",
+    addresses: [
+      {
+        id: "conakry",
+        city: "Conakry",
+        country: "Guinée",
+        address: "Guinée Conakry Qrt Kobaya",
+        phone: "+224 613 15 45 45",
+        isPrimary: true,
+      },
+      {
+        id: "kinshasa",
+        city: "Kinshasa",
+        country: "RD Congo",
+        address: "2ème rue résidentiel, petit boulevard n°1322, C/ Limete",
+        reference: "Réf/ Immeuble Urbain",
+        phone: "+243 894404255",
+        isPrimary: false,
+      },
+    ],
   },
 } as const;
 

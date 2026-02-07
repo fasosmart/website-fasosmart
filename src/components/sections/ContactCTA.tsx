@@ -76,7 +76,10 @@ export function ContactCTA() {
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 0.6 }}
             >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 <Button
                   asChild
                   size="lg"
@@ -106,9 +109,24 @@ export function ContactCTA() {
 
             <div className="space-y-4">
               {[
-                { icon: Phone, label: "Téléphone", value: companyInfo.contact.phone, href: `tel:${companyInfo.contact.phone}` },
-                { icon: Mail, label: "Email", value: companyInfo.contact.email, href: `mailto:${companyInfo.contact.email}` },
-                { icon: MapPin, label: "Adresse", value: companyInfo.contact.address, href: null },
+                {
+                  icon: Phone,
+                  label: "Téléphone",
+                  value: companyInfo.contact.addresses[0].phone,
+                  href: `tel:${companyInfo.contact.addresses[0].phone}`,
+                },
+                {
+                  icon: Mail,
+                  label: "Email",
+                  value: companyInfo.contact.email,
+                  href: `mailto:${companyInfo.contact.email}`,
+                },
+                {
+                  icon: MapPin,
+                  label: "Adresse",
+                  value: companyInfo.contact.addresses[0].address,
+                  href: null,
+                },
               ].map((item, index) => {
                 const Icon = item.icon;
                 const Component = item.href ? "a" : "div";
@@ -147,4 +165,3 @@ export function ContactCTA() {
     </section>
   );
 }
-

@@ -15,9 +15,7 @@ export function Footer() {
             <p className="text-sm text-gray-300 leading-relaxed mt-4">
               {companyInfo.mission}
             </p>
-            <p className="text-xs text-primary italic">
-              {companyInfo.tagline}
-            </p>
+            <p className="text-xs text-primary italic">{companyInfo.tagline}</p>
           </div>
 
           {/* Navigation */}
@@ -47,8 +45,8 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
                 <Phone className="h-4 w-4 shrink-0 text-primary" />
-                <a href={`tel:${companyInfo.contact.phone}`}>
-                  {companyInfo.contact.phone}
+                <a href={`tel:${companyInfo.contact.addresses[0].phone}`}>
+                  {companyInfo.contact.addresses[0].phone}
                 </a>
               </li>
               <li className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors">
@@ -69,7 +67,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3 text-gray-300">
                 <MapPin className="h-4 w-4 shrink-0 mt-0.5 text-primary" />
-                <span>{companyInfo.contact.address}</span>
+                <span>{companyInfo.contact.addresses[0].address}</span>
               </li>
             </ul>
           </div>

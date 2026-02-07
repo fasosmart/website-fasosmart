@@ -26,3 +26,12 @@ export type CompanyInfo = {
   };
 };
 
+export type Address = {
+  id: string; // Identifiant unique
+  city: string; // Ville
+  country: string; // Pays
+  address: string; // Adresse complète
+  phone: string; // Numéro de téléphone
+  reference?: string; // Référence optionnelle (point de repère)
+  isPrimary?: boolean; // Indique si c'est l'adresse principale
+};

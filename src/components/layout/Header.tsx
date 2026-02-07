@@ -317,11 +317,11 @@ export function Header() {
             </p>
             <div className="space-y-2">
               <a
-                href={`tel:${companyInfo.contact.phone}`}
+                href={`tel:${companyInfo.contact.addresses[0].phone}`}
                 className="flex items-center gap-3 text-sm text-primary hover:underline"
               >
                 <Phone className="w-4 h-4" />
-                {companyInfo.contact.phone}
+                {companyInfo.contact.addresses[0].phone}
               </a>
               <a
                 href={`mailto:${companyInfo.contact.email}`}

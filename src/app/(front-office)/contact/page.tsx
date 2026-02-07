@@ -47,11 +47,11 @@ export default function ContactPage() {
       </section>
 
       {/* Map Section */}
-      <section className="py-0 bg-background border-t border-border/40">
+      {/* <section className="py-0 bg-background border-t border-border/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <Map />
         </div>
-      </section>
+      </section> */}
     </>
   );
 }

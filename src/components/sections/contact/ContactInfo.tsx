@@ -1,10 +1,24 @@
+// src/components/sections/contact/ContactInfo.tsx
 "use client";
 
+import { useState } from "react";
 import { Phone, Mail, MapPin, Clock, Globe } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { companyInfo } from "@/lib/constants";
 
 export function ContactInfo() {
+  const addresses = companyInfo.contact.addresses;
+
+  const [activeLocationId, setActiveLocationId] = useState<string>(
+    addresses.find((addr) => addr.isPrimary)?.id ?? addresses[0]?.id,
+  );
+
+  const currentLocation = addresses.find(
+    (addr) => addr.id === activeLocationId,
+  );
+
+  if (!currentLocation) return null;
+
   return (
     <motion.div
       className="space-y-6"
@@ -13,7 +27,7 @@ export function ContactInfo() {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.6 }}
     >
-      {/* Intro */}
+      {/* ==================== HEADER ==================== */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -24,80 +38,156 @@ export function ContactInfo() {
           Contactez-nous
         </h2>
         <p className="text-muted-foreground">
-          Notre équipe est à votre disposition pour répondre à toutes vos
-          questions et vous accompagner dans vos projets.
+          {addresses.length > 1
+            ? "Présents en Guinée et en RD Congo, notre équipe est à votre disposition pour répondre à vos questions."
+            : "Notre équipe est à votre disposition pour répondre à toutes vos questions et vous accompagner dans vos projets."}
         </p>
       </motion.div>
 
-      {/* Contact Cards avec animations */}
-      <div className="space-y-4">
-        {[
-          { icon: Phone, label: "Téléphone", value: companyInfo.contact.phone, href: `tel:${companyInfo.contact.phone}`, clickable: true },
-          { icon: Mail, label: "Email", value: companyInfo.contact.email, href: `mailto:${companyInfo.contact.email}`, clickable: true },
-          { icon: Globe, label: "Site web", value: companyInfo.contact.website, href: `https://${companyInfo.contact.website}`, clickable: true },
-          { icon: MapPin, label: "Adresse", value: companyInfo.contact.address, href: null, clickable: false },
-          { icon: Clock, label: "Horaires", value: "Lun - Ven : 8h - 18h", value2: "Sam : 9h - 13h", href: null, clickable: false },
-        ].map((item, index) => {
-          const Icon = item.icon;
-          const Component = item.clickable ? "a" : "div";
-          return (
-            <motion.div
-              key={item.label}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 + index * 0.1, duration: 0.4 }}
+      {/* ==================== TABS ==================== */}
+      {addresses.length > 1 && (
+        <div className="flex gap-2 p-1 bg-muted/50 rounded-lg">
+          {addresses.map((location) => (
+            <button
+              key={location.id}
+              onClick={() => setActiveLocationId(location.id)}
+              className={`flex-1 px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                activeLocationId === location.id
+                  ? "bg-primary text-primary-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
+              }`}
+              aria-pressed={activeLocationId === location.id}
             >
-              <Component
-                href={item.href || undefined}
-                target={
-                  item.clickable && item.href?.startsWith("http")
-                    ? "_blank"
-                    : undefined
-                }
-                rel={
-                  item.clickable && item.href?.startsWith("http")
-                    ? "noopener noreferrer"
-                    : undefined
-                }
-                className={`flex items-start gap-4 p-4 rounded-xl bg-card border border-border transition-all group ${
-                  item.clickable
-                    ? "hover:border-primary/40 hover:shadow-lg cursor-pointer"
-                    : ""
-                }`}
-              >
-                <motion.div
-                  className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors"
-                  whileHover={{ rotate: 360, scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <Icon className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
-                </motion.div>
-                <div>
-                  <p className="text-sm text-muted-foreground mb-1">
-                    {item.label}
-                  </p>
-                  <p
-                    className={`font-semibold ${
-                      item.clickable
-                        ? "text-foreground group-hover:text-primary transition-colors"
-                        : "text-foreground"
-                    }`}
-                  >
-                    {item.value}
-                  </p>
-                  {item.value2 && (
-                    <p className="text-sm text-muted-foreground">
-                      {item.value2}
-                    </p>
-                  )}
-                </div>
-              </Component>
+              {location.city}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {/* ==================== CARTES ==================== */}
+      <div className="space-y-4">
+        {/* TÉLÉPHONE */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2, duration: 0.4 }}
+        >
+          <a
+            href={`tel:${currentLocation.phone}`}
+            className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border hover:border-primary/40 hover:shadow-lg transition-all group"
+          >
+            <motion.div
+              className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary"
+              whileHover={{ rotate: 360, scale: 1.1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Phone className="w-5 h-5 text-primary group-hover:text-white" />
             </motion.div>
-          );
-        })}
+            <div>
+              <p className="text-sm text-muted-foreground">Téléphone</p>
+              <p className="font-semibold">{currentLocation.phone}</p>
+            </div>
+          </a>
+        </motion.div>
+
+        {/* EMAIL */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.4 }}
+        >
+          <a
+            href={`mailto:${companyInfo.contact.email}`}
+            className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border hover:border-primary/40 hover:shadow-lg transition-all group"
+          >
+            <motion.div
+              className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary"
+              whileHover={{ rotate: 360, scale: 1.1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Mail className="w-5 h-5 text-primary group-hover:text-white" />
+            </motion.div>
+            <div>
+              <p className="text-sm text-muted-foreground">Email</p>
+              <p className="font-semibold">{companyInfo.contact.email}</p>
+            </div>
+          </a>
+        </motion.div>
+
+        {/* SITE WEB */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4, duration: 0.4 }}
+        >
+          <a
+            href={`https://${companyInfo.contact.website}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border hover:border-primary/40 hover:shadow-lg transition-all group"
+          >
+            <motion.div
+              className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary"
+              whileHover={{ rotate: 360, scale: 1.1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Globe className="w-5 h-5 text-primary group-hover:text-white" />
+            </motion.div>
+            <div>
+              <p className="text-sm text-muted-foreground">Site web</p>
+              <p className="font-semibold">{companyInfo.contact.website}</p>
+            </div>
+          </a>
+        </motion.div>
+
+        {/* ADRESSE */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentLocation.id}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: 20 }}
+            transition={{ duration: 0.3 }}
+            className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border"
+          >
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+              <MapPin className="w-5 h-5 text-primary" />
+            </div>
+            <div>
+              <p className="text-sm text-muted-foreground">
+                Adresse - {currentLocation.city}, {currentLocation.country}
+              </p>
+              <p className="font-semibold">{currentLocation.address}</p>
+              {/* {currentLocation.reference && (
+                <p className="text-xs text-muted-foreground mt-1">
+                  {currentLocation.reference}
+                </p>
+              )} */}
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* HORAIRES */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6, duration: 0.4 }}
+          className="flex items-start gap-4 p-4 rounded-xl bg-card border border-border"
+        >
+          <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+            <Clock className="w-5 h-5 text-primary" />
+          </div>
+          <div>
+            <p className="text-sm text-muted-foreground">Horaires</p>
+            <p className="font-semibold">Lun - Ven : 8h - 18h</p>
+            <p className="text-sm text-muted-foreground">Sam : 9h - 13h</p>
+          </div>
+        </motion.div>
       </div>
     </motion.div>
   );
 }
-
