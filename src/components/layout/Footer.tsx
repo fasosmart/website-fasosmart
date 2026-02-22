@@ -1,13 +1,13 @@
 import Link from "next/link";
-import { Phone, Mail, Globe, MapPin } from "lucide-react";
+import { Phone, Mail, Globe, MapPin, ExternalLink } from "lucide-react";
 import { Logo } from "@/components/shared/Logo";
-import { companyInfo, navigation } from "@/lib/constants";
+import { companyInfo, divisions, navigation } from "@/lib/constants";
 
 export function Footer() {
   return (
     <footer className="bg-[#063251] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="space-y-4">
             {/* Logo Footer */}
@@ -36,7 +36,25 @@ export function Footer() {
               ))}
             </ul>
           </div>
-
+        {/* Divisions */}
+        <div className="divisions space-y-4">
+          <h3>Nos Filiales</h3>
+          <ul className="space-y-3">
+            {divisions.map((division) => (
+              <li key={division.name} className="flex items-center">
+          <a
+            href={`https://${division.website}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2"
+          >
+            <span>{division.name}</span>
+            <ExternalLink className="w-4 h-4" />
+          </a>
+              </li>
+            ))}
+          </ul>
+        </div>
           {/* Contact */}
           <div>
             <h3 className="font-display font-semibold text-lg mb-4 text-white">
@@ -80,6 +98,7 @@ export function Footer() {
             réservés.
           </p>
         </div>
+
       </div>
     </footer>
   );
