@@ -39,11 +39,35 @@ export const companyInfo = {
 export const navigation = [
   { name: "Accueil", href: "/" },
   { name: "À Propos", href: "/a-propos" },
-  { name: "Nos Filiales", href: "#" },
-  // { name: "Services", href: "/services" },
+  // { name: "Nos Filiales", href: "#" },
+  { name: "Services", href: "/services" },
   { name: "Formations", href: "/formations" },
   { name: "Nos réalisations", href: "/realisations" },
   { name: "Contact", href: "/contact" },
+] as const;
+
+export const divisions = [
+  {
+    name: "FasoTrax",
+    description:
+      "Solutions de tracking GPS, gestion de flotte et Internet des Objets pour optimiser vos opérations.",
+    website: "fasotrax.com",
+      //image: "/images/divisions/fasotrax.jpg",
+  },
+  {
+    name: "FasoHosting",
+    description:
+    "Hébergement web fiable et sécurisé, noms de domaine et services cloud pour votre présence en ligne",
+    website: "fasohosting.com",
+    // image: "/images/divisions/fasoedu.jpg",
+  },
+  {
+    name: "Fasosmak",
+    description:
+      "Marketplace d'équipements technologiques, accessoires et solutions B2B pour tous vos besoins IT.",
+    website: "fasosmak.com",
+    // image: "/images/divisions/fasosmak.jpg",
+  },
 ] as const;
 
 export const stats = [

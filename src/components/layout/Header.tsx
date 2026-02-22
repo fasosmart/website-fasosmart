@@ -17,20 +17,20 @@ import { divisionIconMap } from "@/lib/division-icons";
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isServicesOpen, setIsServicesOpen] = useState(false);
-  const [isDivisionsOpen, setIsDivisionsOpen] = useState(false);
+  // const [isServicesOpen, setIsServicesOpen] = useState(false);
+  // const [isDivisionsOpen, setIsDivisionsOpen] = useState(false);
   const pathname = usePathname();
 
   // Vérifier si un lien est actif
   const isActive = (href: string) => pathname === href;
 
   // Vérifier si on est sur une page de services
-  const isServicesActive =
-    pathname === "/services" || pathname.startsWith("/services/");
+  // const isServicesActive =
+  //   pathname === "/services" || pathname.startsWith("/services/");
 
   // Vérifier si on est sur une page de divisions
-  const isDivisionsActive =
-    pathname === "/divisions" || pathname.startsWith("/divisions/");
+  // const isDivisionsActive =
+  //   pathname === "/divisions" || pathname.startsWith("/divisions/");
 
   // Fermer le menu quand on change de page
   useEffect(() => {
@@ -81,14 +81,14 @@ export function Header() {
               <nav className="hidden lg:flex items-center gap-8">
                 {navigation.map((item) => {
                   // Remplacer le lien "Nos Filiales" par le mega-menu
-                  if (item.name === "Nos Filiales") {
-                    return (
-                      <DivisionsDropdown
-                        key={item.name}
-                        isActive={isDivisionsActive}
-                      />
-                    );
-                  }
+                  // if (item.name === "Nos Filiales") {
+                  //   return (
+                  //     <DivisionsDropdown
+                  //       key={item.name}
+                  //       isActive={isDivisionsActive}
+                  //     />
+                  //   );
+                  // }
                   // Remplacer le lien Services par le dropdown
                   // if (item.name === "Services") {
                   //   return (
@@ -162,66 +162,66 @@ export function Header() {
           <nav className="space-y-1">
             {navigation.map((item) => {
               // Gérer le menu "Nos Filiales" avec sous-menu
-              if (item.name === "Nos Filiales") {
-                return (
-                  <div key={item.name}>
-                    <button
-                      onClick={() => setIsDivisionsOpen(!isDivisionsOpen)}
-                      className={cn(
-                        "w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all",
-                        isDivisionsActive
-                          ? "text-primary bg-primary/10 border-l-4 border-primary"
-                          : "text-foreground hover:text-primary hover:bg-secondary",
-                      )}
-                    >
-                      <span>{item.name}</span>
-                      <ChevronRight
-                        className={cn(
-                          "w-4 h-4 transition-transform duration-200",
-                          isDivisionsOpen && "rotate-90",
-                        )}
-                      />
-                    </button>
-                    {/* Sous-menu Filiales */}
-                    {isDivisionsOpen && (
-                      <div className="ml-4 mt-1 space-y-1 border-l-2 border-primary/20 pl-2">
-                        {divisions.map((division) => {
-                          const Icon = divisionIconMap[division.id];
-                          const isExternal = division.url?.startsWith("http");
-                          return (
-                            <a
-                              key={division.id}
-                              href={division.url || "#"}
-                              target={isExternal ? "_blank" : undefined}
-                              rel={
-                                isExternal ? "noopener noreferrer" : undefined
-                              }
-                              onClick={() => {
-                                setIsOpen(false);
-                                setIsDivisionsOpen(false);
-                              }}
-                              className={cn(
-                                "flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all",
-                                pathname === `/divisions/${division.id}`
-                                  ? "text-primary bg-primary/10"
-                                  : "text-muted-foreground hover:text-primary hover:bg-secondary",
-                              )}
-                            >
-                              <Icon className="w-4 h-4 flex-shrink-0" />
-                              <span className="line-clamp-1">
-                                {division.name}
-                              </span>
-                              {isExternal && (
-                                <ExternalLink className="w-3 h-3 ml-auto" />
-                              )}
-                            </a>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                );
-              }
+              // if (item.name === "Nos Filiales") {
+              //   return (
+              //     <div key={item.name}>
+              //       <button
+              //         onClick={() => setIsDivisionsOpen(!isDivisionsOpen)}
+              //         className={cn(
+              //           "w-full flex items-center justify-between px-4 py-3 rounded-xl text-base font-medium transition-all",
+              //           isDivisionsActive
+              //             ? "text-primary bg-primary/10 border-l-4 border-primary"
+              //             : "text-foreground hover:text-primary hover:bg-secondary",
+              //         )}
+              //       >
+              //         <span>{item.name}</span>
+              //         <ChevronRight
+              //           className={cn(
+              //             "w-4 h-4 transition-transform duration-200",
+              //             isDivisionsOpen && "rotate-90",
+              //           )}
+              //         />
+              //       </button>
+              //       {/* Sous-menu Filiales */}
+              //       {isDivisionsOpen && (
+              //         <div className="ml-4 mt-1 space-y-1 border-l-2 border-primary/20 pl-2">
+              //           {divisions.map((division) => {
+              //             const Icon = divisionIconMap[division.id];
+              //             const isExternal = division.url?.startsWith("http");
+              //             return (
+              //               <a
+              //                 key={division.id}
+              //                 href={division.url || "#"}
+              //                 target={isExternal ? "_blank" : undefined}
+              //                 rel={
+              //                   isExternal ? "noopener noreferrer" : undefined
+              //                 }
+              //                 onClick={() => {
+              //                   setIsOpen(false);
+              //                   setIsDivisionsOpen(false);
+              //                 }}
+              //                 className={cn(
+              //                   "flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm transition-all",
+              //                   pathname === `/divisions/${division.id}`
+              //                     ? "text-primary bg-primary/10"
+              //                     : "text-muted-foreground hover:text-primary hover:bg-secondary",
+              //                 )}
+              //               >
+              //                 <Icon className="w-4 h-4 flex-shrink-0" />
+              //                 <span className="line-clamp-1">
+              //                   {division.name}
+              //                 </span>
+              //                 {isExternal && (
+              //                   <ExternalLink className="w-3 h-3 ml-auto" />
+              //                 )}
+              //               </a>
+              //             );
+              //           })}
+              //         </div>
+              //       )}
+              //     </div>
+              //   );
+              // }
               // Gérer le menu Services avec sous-menu
               // if (item.name === "Services") {
               //   return (
